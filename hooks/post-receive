@@ -1,30 +1,9 @@
-#!/bin/sh
-
-#判断是不是远端仓库
-IS_BARE=$(git rev-parse --is-bare-repository) 
-if [ -z "$IS_BARE" ]; 
-then 
-echo >&2 "fatal: post-receive: IS_NOT_BARE" 
-exit 1 
-fi 
-
-unset GIT_DIR 
-DeployPath="/www/wwwroot/pig" 
-
-echo "===============================================" 
-cd $DeployPath 
-echo "deploying the test web" 
-
-＃git stash 
-
-#git pull origin master 
-
-git fetch --all 
-git reset --hard origin/master 
-
-gitbook build 
-sleep 15 
-
-time=`date` 
-echo "web server pull at webserver at time: $time." 
-echo "================================================"
+#!/bin/bash -l 
+GIT_REPO=git@github.com:jaxma/pig.git
+TMP_GIT_CLONE=/tmp/pig 
+PUBLIC_WWW=/www/wwwroot/pig
+rm -rf ${TMP_GIT_CLONE} 
+git clone $GIT_REPO $TMP_GIT_CLONE 
+cd $TMP_GIT_CLONE 
+rm -rf ${PUBLIC_WWW}/* 
+cp -rf ${TMP_GIT_CLONE}/* ${PUBLIC_WWW}
