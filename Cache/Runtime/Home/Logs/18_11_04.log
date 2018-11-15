@@ -1,0 +1,78 @@
+[ 2018-11-04T00:07:16+08:00 ] ERR: (ThinkException) 模板不存在[./Home/Tpl/Index/freeback2.html]
+[ 2018-11-04T00:07:16+08:00 ] 120.230.95.10 /index.php/Index/freeback2/guestbook_id/8
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000721s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000836s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /www/wwwroot/pig/ThinkPHP/Lib/Core/Dispatcher.class.php 第 120 行.
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000462s ]
+INFO: Run CheckLang Behavior [ RunTime:0.000351s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000910s ]
+NOTIC: [2048] Declaration of IndexAction::upload() should be compatible with CommonAction::upload($allowExts, $savePath, $saveRule, $thumb, $thumbPath, $thumbMaxWidth, $thumbMaxHeight, $thumbPrefix) /www/wwwroot/pig/Home/Lib/Action/IndexAction.class.php 第 2 行.
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /www/wwwroot/pig/ThinkPHP/Lib/Driver/Db/DbMysql.class.php 第 55 行.
+SQL: SHOW COLUMNS FROM `tp_ads` [ RunTime:0.001043s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /www/wwwroot/pig/ThinkPHP/Lib/Core/Db.class.php 第 568 行.
+SQL: SELECT * FROM `tp_ads` WHERE ( ads_id=7 ) LIMIT 1   [ RunTime:0.000119s ]
+SQL: SHOW COLUMNS FROM `tp_articlecat` [ RunTime:0.000634s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /www/wwwroot/pig/ThinkPHP/Lib/Core/Db.class.php 第 568 行.
+SQL: SELECT * FROM `tp_articlecat` WHERE ( `parent_id` = 0 ) ORDER BY sort_order asc  [ RunTime:0.000095s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /www/wwwroot/pig/ThinkPHP/Lib/Core/Db.class.php 第 568 行.
+SQL: SELECT * FROM `tp_articlecat` WHERE ( `parent_id` = 1 ) ORDER BY sort_order asc  [ RunTime:0.000136s ]
+NOTIC: [2] Invalid argument supplied for foreach() /www/wwwroot/pig/Home/Lib/Action/CommonAction.class.php 第 81 行.
+SQL: SHOW COLUMNS FROM `tp_config` [ RunTime:0.000376s ]
+ERR: Table 'pig.tp_config' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `tp_config`
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /www/wwwroot/pig/ThinkPHP/Lib/Core/Db.class.php 第 568 行.
+SQL: SELECT * FROM `tp_config`  [ RunTime:0.000126s ]
+ERR: Table 'pig.tp_config' doesn't exist
+ [ SQL语句 ] : SELECT * FROM `tp_config` 
+NOTIC: [2] Invalid argument supplied for foreach() /www/wwwroot/pig/Home/Lib/Action/CommonAction.class.php 第 225 行.
+NOTIC: [8] Undefined index: address /www/wwwroot/pig/Home/Lib/Action/CommonAction.class.php 第 228 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /www/wwwroot/pig/ThinkPHP/Lib/Core/Db.class.php 第 568 行.
+SQL: SELECT * FROM `tp_config`  [ RunTime:0.000109s ]
+ERR: Table 'pig.tp_config' doesn't exist
+ [ SQL语句 ] : SELECT * FROM `tp_config` 
+NOTIC: [2] Invalid argument supplied for foreach() /www/wwwroot/pig/Home/Lib/Action/CommonAction.class.php 第 225 行.
+NOTIC: [8] Undefined index: mobile /www/wwwroot/pig/Home/Lib/Action/CommonAction.class.php 第 228 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /www/wwwroot/pig/ThinkPHP/Lib/Core/Db.class.php 第 568 行.
+SQL: SELECT * FROM `tp_config`  [ RunTime:0.000109s ]
+ERR: Table 'pig.tp_config' doesn't exist
+ [ SQL语句 ] : SELECT * FROM `tp_config` 
+NOTIC: [2] Invalid argument supplied for foreach() /www/wwwroot/pig/Home/Lib/Action/CommonAction.class.php 第 225 行.
+NOTIC: [8] Undefined index: mobile /www/wwwroot/pig/Home/Lib/Action/CommonAction.class.php 第 228 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /www/wwwroot/pig/ThinkPHP/Lib/Core/Db.class.php 第 568 行.
+SQL: SELECT * FROM `tp_config`  [ RunTime:0.000106s ]
+ERR: Table 'pig.tp_config' doesn't exist
+ [ SQL语句 ] : SELECT * FROM `tp_config` 
+NOTIC: [2] Invalid argument supplied for foreach() /www/wwwroot/pig/Home/Lib/Action/CommonAction.class.php 第 225 行.
+NOTIC: [8] Undefined index: email /www/wwwroot/pig/Home/Lib/Action/CommonAction.class.php 第 228 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /www/wwwroot/pig/ThinkPHP/Lib/Core/Db.class.php 第 568 行.
+SQL: SELECT * FROM `tp_config`  [ RunTime:0.000136s ]
+ERR: Table 'pig.tp_config' doesn't exist
+ [ SQL语句 ] : SELECT * FROM `tp_config` 
+NOTIC: [2] Invalid argument supplied for foreach() /www/wwwroot/pig/Home/Lib/Action/CommonAction.class.php 第 225 行.
+NOTIC: [8] Undefined index: copyright /www/wwwroot/pig/Home/Lib/Action/CommonAction.class.php 第 228 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /www/wwwroot/pig/ThinkPHP/Lib/Core/Db.class.php 第 568 行.
+SQL: SELECT * FROM `tp_config`  [ RunTime:0.000117s ]
+ERR: Table 'pig.tp_config' doesn't exist
+ [ SQL语句 ] : SELECT * FROM `tp_config` 
+NOTIC: [2] Invalid argument supplied for foreach() /www/wwwroot/pig/Home/Lib/Action/CommonAction.class.php 第 225 行.
+NOTIC: [8] Undefined index: technology /www/wwwroot/pig/Home/Lib/Action/CommonAction.class.php 第 228 行.
+SQL: SHOW COLUMNS FROM `tp_guestbook` [ RunTime:0.000792s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /www/wwwroot/pig/ThinkPHP/Lib/Core/Db.class.php 第 568 行.
+SQL: SELECT * FROM `tp_guestbook` WHERE ( guestbook_id = 8 ) LIMIT 1   [ RunTime:0.000099s ]
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead /www/wwwroot/pig/ThinkPHP/Lib/Core/Db.class.php 第 568 行.
+SQL: SELECT * FROM `tp_guestbook` WHERE ( 1 ) ORDER BY guestbook_id desc LIMIT 15   [ RunTime:0.000093s ]
+INFO: [ view_template ] --START--
+NOTIC: [8] Undefined index: class /www/wwwroot/pig/ThinkPHP/Lib/Core/ThinkException.class.php 第 63 行.
+NOTIC: [8] Undefined index: type /www/wwwroot/pig/ThinkPHP/Lib/Core/ThinkException.class.php 第 63 行.
+NOTIC: [8] Undefined index: class /www/wwwroot/pig/ThinkPHP/Lib/Core/ThinkException.class.php 第 63 行.
+NOTIC: [8] Undefined index: type /www/wwwroot/pig/ThinkPHP/Lib/Core/ThinkException.class.php 第 63 行.
+NOTIC: [8] Undefined index: file /www/wwwroot/pig/ThinkPHP/Lib/Core/ThinkException.class.php 第 62 行.
+NOTIC: [8] Undefined index: line /www/wwwroot/pig/ThinkPHP/Lib/Core/ThinkException.class.php 第 62 行.
+NOTIC: [4096] Object of class IndexAction could not be converted to string /www/wwwroot/pig/ThinkPHP/Lib/Core/ThinkException.class.php 第 64 行.
+NOTIC: [8] Undefined index: class /www/wwwroot/pig/ThinkPHP/Lib/Core/ThinkException.class.php 第 63 行.
+NOTIC: [8] Undefined index: type /www/wwwroot/pig/ThinkPHP/Lib/Core/ThinkException.class.php 第 63 行.
+NOTIC: [8] Undefined index: class /www/wwwroot/pig/ThinkPHP/Lib/Core/ThinkException.class.php 第 63 行.
+NOTIC: [8] Undefined index: type /www/wwwroot/pig/ThinkPHP/Lib/Core/ThinkException.class.php 第 63 行.
+
