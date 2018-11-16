@@ -1,21 +1,20 @@
   <?php
 
-
-    $target = '/home/www/im'; // 生产环境web目录
+    $target = '/www/wwwroot/pig'; // 生产环境web目录
     //密钥
     $secret = "123456";
     $wwwUser = 'root';
     $wwwGroup = 'root';
 
     //日志文件地址
-    $fs = fopen('../storage/logs/gitHubAuto_hook.log', 'a');
+    $fs = fopen('./gitHubAuto_hook.log', 'a');
 
     //获取GitHub发送的内容 
     $json = file_get_contents('php://input');
     $content = json_decode($json, true);
     //github发送过来的签名  
     $signature = $_SERVER['HTTP_X_HUB_SIGNATURE'];
-
+//print_r($signature);echo 1;die;
     if (!$signature) {
        fclose($fs);
        return http_response_code(404);
