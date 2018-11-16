@@ -3,8 +3,8 @@
     $target = '/www/wwwroot/pig'; // 生产环境web目录
     //密钥
     $secret = "123456";
-    $wwwUser = 'www';
-    $wwwGroup = 'www';
+    $wwwUser = 'root';
+    $wwwGroup = 'root';
 
     //日志文件地址
     $fs = fopen('./gitHubAuto_hook.log', 'a');
@@ -26,7 +26,7 @@
 
     // 判断签名是否匹配  
     if ($hash === $payloadHash) {
-        $cmd = "cd $target";
+        $cmd = "cd ".$target;
         $cmd = "git pull origin master";
         $res = shell_exec($cmd);
 
