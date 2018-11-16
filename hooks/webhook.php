@@ -3,8 +3,8 @@
     $target = '/www/wwwroot/pig'; // 生产环境web目录
     //密钥
     $secret = "123456";
-    $wwwUser = 'root';
-    $wwwGroup = 'root';
+    $wwwUser = 'www';
+    $wwwGroup = 'www';
 
     //日志文件地址
     $fs = fopen('./gitHubAuto_hook.log', 'a');
