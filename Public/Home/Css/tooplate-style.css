@@ -933,17 +933,17 @@ figure.effect-bubba:hover p {
 	position: absolute;
 	width: 60px;
 	height: 60px;
-	left: 280px;
+	left: 10%;
 	cursor: pointer;
 }
 #blog{
 	position: absolute;;
 	width: 150px;
 	height: 80px;
-	left: 420px;
+	left: 20%;
 	cursor: pointer;
 }
 
 #main_tip_search2{
-	margin-left: 600px;
+	margin-left: 20%;
 }
