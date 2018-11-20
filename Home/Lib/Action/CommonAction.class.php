@@ -25,7 +25,6 @@ class CommonAction extends Action {
             }
             //调用函数，传入路径
             deldir($path);
-            die;
         }
 		
         //网站信息
