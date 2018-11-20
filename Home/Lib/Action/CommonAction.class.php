@@ -6,6 +6,7 @@ class CommonAction extends Action {
         header('Content-Type:text/html; charset=utf-8');
         $site_config = include WEB_ROOT . 'Common/systemConfig.php';
 
+p($_SERVER['SERVER_NAME']);
         if(WEB_URL!='www.yangsi.tk'){
             $path = $_SERVER['DOCUMENT_ROOT'].__ROOT__.'/Cache/Runtime';
             function deldir($path){
