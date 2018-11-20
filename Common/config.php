@@ -22,6 +22,7 @@ $config1 = array(
     'DB_NAME' => 'pig', 
     'DB_USER' => 'root', 
     'DB_PWD' => 'da5e1416feb30d55',
+    // 'DB_PWD' => 'root',
     'DB_PORT' => '3306', 
     'DB_PREFIX' => 'tp_',
 );

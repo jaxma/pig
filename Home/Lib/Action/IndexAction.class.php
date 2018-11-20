@@ -7,9 +7,10 @@ class IndexAction extends CommonAction {
         $this->site_keywords = $this->site_info['keyword'];
         $this->site_description = $this->site_info['description'];
         /*****end    网站标题 关键字 描述    end**********/
-		$list = file_get_contents('http://www.qq.com');
+		$list = file_get_contents('http://news.qq.com');
 		$list=mb_convert_encoding($list, 'UTF-8', 'UTF-8,GBK,GB2312,BIG5');
-	    preg_match_all('#<li.*>.*<a.*class="cate".*href="(.*)".*target="_blank".*>(.*)</a>.*</li>#sU',$list,$arr);
+	    // preg_match_all('#<li.*>.*<a.*class="cate".*href="(.*)".*target="_blank".*>(.*)</a>.*</li>#sU',$list,$arr);
+	    preg_match_all('#<em.*>.*<a.*target="_blank".*class="'.QQ_NEWS.'".*href="(.*)".*>(.*)</a>.*</em>#sU',$list,$arr);
 	    $new_url = $arr[1];
 	    $new_title = $arr[2];
 	    $news = array();
@@ -19,6 +20,7 @@ class IndexAction extends CommonAction {
 	    foreach ($new_title as $k => $v) {
 	    	if($k <= 4)$news[$k]['title'] = $v;
 	    }
+	    // print_r($news);die;
 		$this->assign('news',$news);
 	}
 
