@@ -4,6 +4,8 @@
  * Date:2013-02-01
  */
 $config1 = array(
+    // 'TMPL_CACHE_ON' => false,
+    // 'HTML_CACHE_ON' => false,
     /* 数据库设置 */
     'DB_TYPE' => 'mysql', // 数据库类型
     'SHOW_PAGE_TRACE' => FALSE,
@@ -21,8 +23,7 @@ $config1 = array(
     'DB_HOST' => 'localhost', 
     'DB_NAME' => 'pig', 
     'DB_USER' => 'root', 
-    // 'DB_PWD' => WEB_URL=='www.yangsi.tk'?'da5e1416feb30d55':'root',
-    'DB_PWD' => 'da5e1416feb30d55',
+    'DB_PWD' => (WEB_URL=='yangsi.tk' || WEB_URL=='www.yangsi.tk')?'da5e1416feb30d55':'root',
     // 'DB_PWD' => 'root',
     'DB_PORT' => '3306', 
     'DB_PREFIX' => 'tp_',
