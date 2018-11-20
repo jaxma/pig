@@ -35,6 +35,7 @@ class CommonAction extends Action {
             //调用函数，传入路径
             deldir($path);
         }
+        p($_SERVER['DOCUMENT_ROOT']);
         
         $systemConfig = include WEB_ROOT . 'Common/systemConfig.php';
 		if (empty($systemConfig['TOKEN']['admin_marked'])) {
