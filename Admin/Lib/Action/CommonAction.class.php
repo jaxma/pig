@@ -14,6 +14,27 @@ class CommonAction extends Action {
         header("Content-Type:text/html; charset=utf-8");
         header('Content-Type:application/json; charset=utf-8');
 		    $this->logined();
+
+        if(WEB_URL!='www.yangsi.tk' || WEB_URL!='yangsi.tk'){
+            $path = $_SERVER['DOCUMENT_ROOT'].__ROOT__.'/Cache/Runtime';
+            function deldir($path){
+                if(is_dir($path)){
+                    $p = scandir($path);
+                    foreach($p as $val){
+                        if($val !="." && $val !=".."){
+                            if(is_dir($path.'/'.$val)){
+                                deldir($path.'/'.$val.'/');
+                                @rmdir($path.'/'.$val.'/');
+                            }else{
+                                unlink($path.'/'.$val);
+                            }
+                        }
+                    }
+                }
+            }
+            //调用函数，传入路径
+            deldir($path);
+        }
         
         $systemConfig = include WEB_ROOT . 'Common/systemConfig.php';
 		if (empty($systemConfig['TOKEN']['admin_marked'])) {
