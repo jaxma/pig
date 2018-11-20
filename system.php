@@ -10,6 +10,7 @@ define('WEB_CACHE_PATH', WEB_ROOT."Cache/");//网站当前路径
 define("RUNTIME_PATH", WEB_ROOT . "Cache/Runtime/Admin/");
 define("DatabaseBackDir", WEB_ROOT . "Databases/"); //系统备份数据库文件存放目录
 define('ADMIN_CSS', './Admin/Tpl/Public/');  //样式与图片路径
+define('WEB_URL', $_SERVER['SERVER_NAME']);
 define('APP_DEBUG', true);
 
 require(THINK_PATH . "ThinkPHP.php");
