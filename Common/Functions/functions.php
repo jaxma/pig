@@ -12,6 +12,12 @@ function pre($content) {
     print_r($content);
     echo "</pre>";
 }
+function p($content) {
+    echo "<pre>";
+    print_r($content);
+    echo "</pre>";
+}
+
 
 /**
   +----------------------------------------------------------

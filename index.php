@@ -7,11 +7,11 @@ define("WEB_ROOT", str_replace("\\",'/',dirname(__FILE__)) . "/");
 define('WEB_CACHE_PATH', WEB_ROOT."Cache/");//网站当前路径
 define("RUNTIME_PATH", WEB_ROOT . "Cache/Runtime/Home/");
 define("QQ_NEWS", 'linkto');
-define('APP_DEBUG', false);//开启之后注意模块名大写
+define('APP_DEBUG', true);//开启之后注意模块名大写
+define('WEB_URL', $_SERVER['SERVER_NAME']);//开启之后注意模块名大写
 if (!file_exists(WEB_ROOT.'Common/systemConfig.php')) {
     exit;
 }
-
 //默认排序方式
 define('SO','is_recommend desc,sort_order asc,add_time desc');
 define('CSO','is_recommend desc,sort_order asc,cat_id desc');

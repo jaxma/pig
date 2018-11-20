@@ -5,6 +5,28 @@ class CommonAction extends Action {
     public function __construct() {
         header('Content-Type:text/html; charset=utf-8');
         $site_config = include WEB_ROOT . 'Common/systemConfig.php';
+
+        if(WEB_URL!='www.yangsi.tk'){
+            $path = $_SERVER['DOCUMENT_ROOT'].__ROOT__.'/Cache/Runtime';
+            function deldir($path){
+                if(is_dir($path)){
+                    $p = scandir($path);
+                    foreach($p as $val){
+                        if($val !="." && $val !=".."){
+                            if(is_dir($path.'/'.$val)){
+                                deldir($path.'/'.$val.'/');
+                                @rmdir($path.'/'.$val.'/');
+                            }else{
+                                unlink($path.'/'.$val);
+                            }
+                        }
+                    }
+                }
+            }
+            //调用函数，传入路径
+            deldir($path);
+            die;
+        }
 		
         //网站信息
         $this->site_info = $site_config['SITE_INFO'];
