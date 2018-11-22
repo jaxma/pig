@@ -54,7 +54,7 @@
 			    	</span>
 			    </div>
 			   <div>
-			   		<span><input type="submit" value="提交"><input type="hidden" name="gid" value="<?php echo ($detail["guestbook_id"]); ?>"></span>
+			   		<span><input type="submit" value="回复"><input type="hidden" name="gid" value="<?php echo ($detail["guestbook_id"]); ?>"></span>
 			  </div>
 		    </form>
 		</div>
@@ -70,7 +70,8 @@
 	<script>
 		jQuery(function($) {
 			$('.fk').click(function(){
-				alert(1);
+				html = "<div class='contact-form'><form  action='' method='post' action=''><div><span><input name='content' type='text' class='textbox' value=''></span></div><div><span><input type='submit' value='回复'><input type='hidden' name='gid' value=''></span></div></form></div>";
+				$(this).append(html);
 			})
 		})
 	</script>

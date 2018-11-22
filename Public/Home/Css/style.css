@@ -118,6 +118,9 @@ width: 1380px;
 	border-left:0.5em solid #9B8651;
 	border-bottom:0.5em solid #fff;
 }
+.fk{
+	cursor: pointer;
+}
 /*content*/
 .tlinks{text-indent:-9999px;height:0;line-height:0;font-size:0;overflow:hidden;}
 .content-bg{
