@@ -75,6 +75,9 @@ width: 1380px;
     float:left;
 	overflow:hidden;
 }
+.ribbon .active{
+	color: #D02C2C;
+}
 .ribbon a {
 	border-right: 1px ridge rgb(221, 221, 221);
 	font-family: 'Source Sans Pro', sans-serif;
@@ -510,6 +513,18 @@ width: 1380px;
 	display:block;
 	font-size: 0.924em;
 	padding-bottom:5px;
+}
+.contact-form .comment{
+	display:block;
+	font-size: 1.0em;
+	padding-top:10px;
+	color: #D02C2C;
+}
+.comment_title{
+	color:#555;
+	display:block;
+	font-size: 1.1em;
+	padding-top:10px;
 }
 .span_1_of_2 h3 {
 	text-transform: capitalize;

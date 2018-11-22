@@ -20,7 +20,6 @@ class IndexAction extends CommonAction {
 	    foreach ($new_title as $k => $v) {
 	    	if($k <= 4)$news[$k]['title'] = $v;
 	    }
-	    // print_r($news);die;
 		$this->assign('news',$news);
 	}
 
@@ -81,9 +80,11 @@ class IndexAction extends CommonAction {
 		if(!$guestbook  || !$guestbook_id){
 			$guestbook = M('guestbook')->where('1')->order('guestbook_id desc')->find();
 		}
+		$comments = M('comment')->where('gid = '.$guestbook_id)->order('id desc')->limit(15)->select();
 		$guestbook2 = M('guestbook')->where('1')->order('guestbook_id desc')->limit(15)->select();
 		$this->assign('detail',$guestbook);
 		$this->assign('goods',$guestbook2);
+		$this->assign('comments',$comments);
 		$this->display();
 	}
 	
@@ -99,6 +100,21 @@ class IndexAction extends CommonAction {
 
         if(M('guestbook')->add($data)){
             $this->success('您的留言已经提交，感谢您的反馈！');
+        }else{
+            $this->error('网络错误！');
+        }
+    }
+    //添加评论
+    public function addComment(){
+        $data = M('Comment')->create();
+
+        if (!$data['content']) $this->error('内容不能为空！');
+
+        $data['add_time'] = time();
+        $data['gid'] = $_REQUEST['gid'];
+
+        if(M('Comment')->add($data)){
+            $this->success('您的评论已经提交，感谢您的反馈！');
         }else{
             $this->error('网络错误！');
         }
