@@ -63,8 +63,17 @@
 	<span class = "comment_title"><label>评论：</label></span>
 
 	<div class="grid-list-btm">
-        <?php if(is_array($comments)): foreach($comments as $key=>$i): ?><p>访客：<?php echo ($i["content"]); ?></p><?php endforeach; endif; ?>
+        <?php if(is_array($comments)): foreach($comments as $key=>$i): ?><p class = "fk" data-id="<?php echo ($i["id"]); ?>">
+	 			访客：<?php echo ($i["content"]); ?> 
+	 		</p><?php endforeach; endif; ?>
 	</div>
+	<script>
+		jQuery(function($) {
+			$('.fk').click(function(){
+				alert(1);
+			})
+		})
+	</script>
 
 	</div>
 
@@ -86,6 +95,7 @@
   <div class="box1">
 		<h4>最新资讯</h4>
         <?php if(is_array($news)): foreach($news as $key=>$i): ?><a href = '<?php echo ($i["url"]); ?>' target="_blank"><p><?php echo ($i["title"]); ?></p></a><?php endforeach; endif; ?>
+      <a href="http://www.5ifxw.com/fuli/" target="_blank"><p>福利</p></a>
   </div>
 <div class="clear"></div>			
 </div>

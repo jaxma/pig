@@ -38,9 +38,18 @@
 
 	<div class="grid-list-btm">
         <foreach name='comments' item='i'>
-	 		<p>访客：{$i.content}</p>
+	 		<p class = "fk" data-id="{$i.id}">
+	 			访客：{$i.content} 
+	 		</p>
 	 	</foreach>
 	</div>
+	<script>
+		jQuery(function($) {
+			$('.fk').click(function(){
+				alert(1);
+			})
+		})
+	</script>
 
 	</div>
 
