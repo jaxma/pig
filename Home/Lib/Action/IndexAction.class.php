@@ -80,7 +80,7 @@ class IndexAction extends CommonAction {
 		if(!$guestbook  || !$guestbook_id){
 			$guestbook = M('guestbook')->where('1')->order('guestbook_id desc')->find();
 		}
-		$comments = M('comment')->where('gid = '.$guestbook_id)->order('id desc')->limit(15)->select();
+		$comments = M('comment')->where('pid = 0 and gid = '.$guestbook_id)->order('add_time desc')->limit(15)->select();
 		$guestbook2 = M('guestbook')->where('1')->order('guestbook_id desc')->limit(15)->select();
 		$this->assign('detail',$guestbook);
 		$this->assign('goods',$guestbook2);
@@ -112,12 +112,97 @@ class IndexAction extends CommonAction {
 
         $data['add_time'] = time();
         $data['gid'] = $_REQUEST['gid'];
+        $data['img'] = $_REQUEST['img'];
+        $data['name'] = makeNickname();
 
         if(M('Comment')->add($data)){
             $this->success('您的评论已经提交，感谢您的反馈！');
         }else{
             $this->error('网络错误！');
         }
+    }
+    //添加评论
+    public function addReback(){
+        $data = M('Comment')->create();
+
+        if (!$_REQUEST['con']) {
+        	$res = array(
+        		'code'=>3,
+        		'msg'=>'内容不能为空',
+        	);
+            $this->ajaxReturn($res);
+        }
+
+        if (!$_REQUEST['gid']) {
+        	$res = array(
+        		'code'=>4,
+        		'msg'=>'gid不能为空',
+        	);
+            $this->ajaxReturn($res);
+        }
+
+        if (!$_REQUEST['pid']) {
+        	$res = array(
+        		'code'=>5,
+        		'msg'=>'pid不能为空',
+        	);
+            $this->ajaxReturn($res);
+        }
+
+        $data['add_time'] = time();
+        $data['gid'] = $_REQUEST['gid'];
+        $data['pid'] = $_REQUEST['pid'];
+        $data['img'] = $_REQUEST['img'];
+        $data['content'] = $_REQUEST['con'];
+        $data['name'] = makeNickname();
+
+        $id = M('Comment')->add($data);
+
+        if($id){
+        	$list = M('Comment')->find($id);
+        	$pname = M('Comment')->where('id='.$_REQUEST['pid'])->field('name')->find();
+        	$list['pname'] = $pname['name'];
+        	$res = array(
+        		'code'=>1,
+        		'list'=>$list,
+        		'msg'=>'评论成功',
+        	);
+            $this->ajaxReturn($res);
+        }else{
+        	$res = array(
+        		'code'=>2,
+        		'msg'=>'评论失败',
+        	);
+            $this->ajaxReturn($res);
+        }
+    }
+    public function getMoreReback(){
+        if (!$_REQUEST['pid']) {
+        	$res = array(
+        		'code'=>5,
+        		'msg'=>'pid不能为空',
+        	);
+            $this->ajaxReturn($res);
+        }
+        $pid = $_REQUEST['pid'];
+        $list = M('Comment')->where('pid='.$pid)->order('add_time desc')->select();
+        foreach ($list as $k => $v) {
+        	$pname = M('Comment')->where('id='.$pid)->field('name')->find();
+        	$list[$k]['pname'] = $pname['name'];
+        }
+        if($list){
+        	$res = array(
+        		'code'=>1,
+        		'list'=>$list,
+        		'msg'=>'获取成功',
+        	);
+        }else{
+        	$res = array(
+        		'code'=>2,
+        		'msg'=>'没有评论',
+        	);
+        }
+         $this->ajaxReturn($res);
     }
 	public function save_message(){
 		if(IS_POST){

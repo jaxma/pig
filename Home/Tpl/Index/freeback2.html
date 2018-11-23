@@ -26,30 +26,136 @@
 			    	<span>
 			    		<input name="content" type="text" class="textbox" value="">
 			    	</span>
+				   	<img id="portrait" src="__IMG__/tm-img-01-tn.jpg" value="" style = "width:100px;height:100px;" > 
+				   	<select class="si" >
+				   		<option>选择头像</option>
+				   		<option>1</option>
+				   		<option>2</option>
+				   		<option>3</option>
+				   		<option>4</option>
+				   		<option>5</option>
+				   		<option>6</option>
+				   		<option>7</option>
+				   		<option>8</option>
+				   		<option>9</option>
+				   	</select>
 			    </div>
 			   <div>
-			   		<span><input type="submit" value="回复"><input type="hidden" name="gid" value="{$detail.guestbook_id}"></span>
+			   		<span>
+			   			<input type="submit" value="回复">
+			   			<input type="hidden" name="gid" value="{$detail.guestbook_id}">
+			   			<input type="hidden" name="img" value="" id="headpic">
+			   		</span>
 			  </div>
 		    </form>
 		</div>
 	</div>
 		
 	<span class = "comment_title"><label>评论：</label></span>
-
-	<div class="grid-list-btm">
+	<empty name="comments">
+	<div class="grid-list-btm pl">
+	 		<p>
+	 			<span class = "fk">暂无评论</span> 
+	 		</p>
+	</div>
+	<else/>
+	<div class="grid-list-btm pl">
         <foreach name='comments' item='i'>
-	 		<p class = "fk" data-id="{$i.id}">
-	 			访客：{$i.content} 
+	 		<p data-id="{$i.id}">
+				<img src="{$i.img}" value="" style = "width:40px;height:40px;" > 
+	 			<span class = "fk">{$i.name}：{$i.content}</span> 
+	 			<span class = "more" disabled = "true">更多</span>
 	 		</p>
 	 	</foreach>
 	</div>
+	</empty>
 	<script>
-		jQuery(function($) {
-			$('.fk').click(function(){
-				html = "<div class='contact-form'><form  action='' method='post' action=''><div><span><input name='content' type='text' class='textbox' value=''></span></div><div><span><input type='submit' value='回复'><input type='hidden' name='gid' value=''></span></div></form></div>";
-				$(this).append(html);
+			$('.si').change(function(){
+				picnum = $(this).val();
+				if(picnum == '选择头像')picnum = 1;
+				$('#portrait').attr('src',"__IMG__/tm-img-0"+picnum+"-tn.jpg");
+				$('#headpic').attr('value',"__IMG__/tm-img-0"+picnum+"-tn.jpg");
 			})
-		})
+			addRebackUrl = "{:U('Index/addReback')}";
+			getMoreReback = "{:U('Index/getMoreReback')}"; 
+			borderColor = Math.floor(Math.random () * 900) + 100;
+			$("body").on("click",".fk",function(){
+					$('.reback').remove();
+					html = "<div class='reback'>";
+						html += "<div>";
+							html += "<span>";
+								html += "<input name='content' type='text' class='textbox rebackinp' value=''>";
+							html += "</span>";
+						html += "</div>";
+
+						html += "<div>";
+							html += "<span>";
+								html += "<button class='comment_button cb'>回复</button>";
+							html += "</span>";
+						html += "</div>";
+					html += "</div>";
+					$(this).after(html);
+			})
+			$("body").on("click",".comment_button",function(){
+				pid = $('.reback').prev().parent().data('id');
+				con = $('.rebackinp').val();
+				$.ajaxSettings.async = false;
+				$.post(
+					addRebackUrl,
+					{
+						gid:'{$detail.guestbook_id}',
+						pid:pid,
+						con:con
+					},
+					function(e){
+						v = e.list;
+						temp = '';
+						temp += "<p data-id='"+v.id+"' data-pid="+pid+">";
+						temp += "<span class='fk' style='border-left:solid 5px #"+borderColor+"'>"+v.name+"&nbsp;回复&nbsp;"+v.pname+"："+v.content;
+						temp += "</span>";
+						temp += "<span class='more'>更多";
+						temp += "</span>";
+						temp += "</p>";
+						$('.reback').parent().after(temp);
+						$('.reback').remove();
+					}
+				);
+			})
+			$("body").on("click",".more",function(){
+				pid = $(this).parent().data('id');
+				$this = $(this);
+				$.ajaxSettings.async = false;
+				$.post(
+					getMoreReback,
+					{
+						pid:pid
+					},
+					function(e){
+						if(e.code == 1){
+							temp = '';
+							$.each(e.list,function(k,v){
+								temp += "<p data-id='"+v.id+"'>";
+								temp += "<span class='fk' style='border-left:solid 5px #"+borderColor+"'>"+v.name+"&nbsp;回复&nbsp;"+v.pname+"："+v.content;
+								temp += "</span>";
+								temp += "<span class='more'>更多";
+								temp += "</span>";
+								temp += "</p>";
+							})
+							$('.pl p').each(function(){
+								dpid = $(this).data('pid');
+								if(dpid && dpid == pid){
+									$(this).remove();
+								}
+							})
+							$this.parent().after(temp);
+							$this.text('');
+						}else{
+							alert('没有更多评论！');
+							return;
+						}
+					}
+				)
+			})
 	</script>
 
 	</div>

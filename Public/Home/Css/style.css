@@ -96,6 +96,27 @@ width: 1380px;
 	-o-transition: background-color 0.2s, margin-top 0.2s;
 	transition: background-color 0.2s, margin-top 0.2s;
 }
+.more {
+	cursor: pointer;
+	font-family: 'Source Sans Pro', sans-serif;
+	color: #D02C2C;
+	font-size: 0.9em;
+	text-align: center;
+	width:20.60%;
+	display: inline-block;
+	line-height: 1.5em;;
+	vertical-align:12px;
+	position: relative;
+	-webkit-transition: background-color 0.2s, margin-top 0.2s;
+	-moz-transition: background-color 0.2s, margin-top 0.2s;
+	-ms-transition: background-color 0.2s, margin-top 0.2s;
+	-o-transition: background-color 0.2s, margin-top 0.2s;
+	transition: background-color 0.2s, margin-top 0.2s;
+}
+.pl p{
+	border-top:1px solid #eee; 
+	border-bottom:1px solid #eee; 
+}
 .ribbon a:last-child{
 	border-right: none;
 }
@@ -120,6 +141,7 @@ width: 1380px;
 }
 .fk{
 	cursor: pointer;
+	vertical-align:12px;
 }
 /*content*/
 .tlinks{text-indent:-9999px;height:0;line-height:0;font-size:0;overflow:hidden;}
@@ -508,6 +530,25 @@ width: 1380px;
 	position:relative;
 	padding-bottom:30px;
 }
+.reback{
+	position:relative;
+}
+.rebackinp{
+	font-size: 0.924em;
+	font-family: 'Source Sans Pro', sans-serif;
+	color: #555;
+	padding: 8px;
+	display: block;
+	width: 98%;
+	background: #FFFFFF;
+	border: 1px solid #E4E4E4;
+	outline: none;
+	-webkit-appearance: none;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-o-border-radius: 4px;
+}
 .contact-form div{
 	padding:5px 0;
 }
@@ -569,6 +610,32 @@ width: 1380px;
 	-o-border-radius: 4px;
 	font-size: 1.2em;
 	color: #fff;
+	position: absolute;
+	letter-spacing: 0px;
+	right: 0;
+	border: 1px solid #D02C2C;
+	background: rgb(209,64,64);
+	background: -moz-linear-gradient(top, rgba(209,64,64,1) 0%, rgba(210,58,58,1) 41%, rgba(208,51,51,1) 72%, rgba(208,44,44,1) 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(209,64,64,1)), color-stop(41%,rgba(210,58,58,1)), color-stop(72%,rgba(208,51,51,1)), color-stop(100%,rgba(208,44,44,1)));
+	background: -webkit-linear-gradient(top, rgba(209,64,64,1) 0%,rgba(210,58,58,1) 41%,rgba(208,51,51,1) 72%,rgba(208,44,44,1) 100%);
+	background: -o-linear-gradient(top, rgba(209,64,64,1) 0%,rgba(210,58,58,1) 41%,rgba(208,51,51,1) 72%,rgba(208,44,44,1) 100%);
+	background: -ms-linear-gradient(top, rgba(209,64,64,1) 0%,rgba(210,58,58,1) 41%,rgba(208,51,51,1) 72%,rgba(208,44,44,1) 100%);
+	background: linear-gradient(to bottom, rgba(209,64,64,1) 0%,rgba(210,58,58,1) 41%,rgba(208,51,51,1) 72%,rgba(208,44,44,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d14040', endColorstr='#d02c2c',GradientType=0 );
+	box-shadow: 0 -1px 1px rgba(0,0,0,0.2) inset, 0 1px 1px rgba(219, 212, 212, 0.57) inset, 1px 2px 2px -1px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0 -1px 1px rgba(0,0,0,0.2) inset, 0 1px 1px rgba(255,255,255,0.8) inset, 1px 2px 2px -1px rgba(0,0,0,0.3);
+	-webkit-box-shadow: 0 -1px 1px rgba(0,0,0,0.2) inset, 0 1px 1px rgba(255, 255, 255, 0.41) inset, 1px 2px 2px -1px rgba(0,0,0,0.3);
+}
+.contact-form select{
+	font-family: 'Source Sans Pro', sans-serif;
+	cursor: pointer;
+	padding: 8px 16px;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-o-border-radius: 4px;
+	font-size: 1.1em;
+	color: #666;
 	position: absolute;
 	letter-spacing: 0px;
 	right: 0;

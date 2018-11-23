@@ -1,10 +1,76 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE HTML>
+<html>
+<head>
+<title>宠物家园</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link href="__CSS__/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="__CSS__/camera.css" rel="stylesheet" type="text/css" media="all" />
+ <!-- <script type='text/javascript' src='__JS__/jquery.min.js'></script> -->
+ <script type='text/javascript' src='http://code.jquery.com/jquery-1.8.0.min.js'></script>
+    <script type='text/javascript' src='__JS__/jquery.mobile.customized.min.js'></script>
+    <script type='text/javascript' src='__JS__/jquery.easing.1.3.js'></script> 
+     <script>
+    </script>
+</head>
+<body>
+<div class="wrap">
+<div class="header">
+    <div class="logo">
+        <a href="<?php echo U("Index/index");?>">
+            <!-- <img src="https://static1.squarespace.com/static/535e680de4b0eea56c05a375/5812147f3e00be2c5f42fcad/5824440e15d5db6b11fa3e25/1478771753186/HSBC+Chinese+Proverbs+-+Eyes+%28Twitter%29.gif?format=1000w" style = "width:340px;height:115px;" alt="" order = 0>  -->
+            <img src="__IMG__/logo/1.gif" style = "width:340px;height:115px;" alt="" order = 1> 
+        </a>
+    </div>
+    <div class='ribbon' action='<?php echo ($action); ?>'>
+        <a href='<?php echo U("Index/index");?>'>博客</a>
+        <a href='<?php echo U("Index/freeback");?>'>留言</a>
+        <a href='<?php echo U("Index/index2");?>'>宠物图片</a>
+    </div>
+</div>
+
+<div class="clear"></div>
+<div class="main">
+<div class="content-bg">
+<div class="section group">				
+<div class="col span_1_of_2">
+<div class="contact_info">
+	<h3>留言列表</h3>
+<?php if(is_array($guestbook)): foreach($guestbook as $key=>$i): ?><a style = "color:black;" href="<?php echo U('Index/freeback2', array('guestbook_id'=>$i['guestbook_id']));?>"><h4>※<?php echo (mb_substr($i["name"],0,15,'UTF-8')); ?></h4></a><?php endforeach; endif; ?>
+</div>
+<br>
+<div class="company_address">
+ 	<h3>邮箱地址 :</h3>
+	 	<p>Email: <span>1105190775@qq.com</span></p>
+</div>
+</div>				
+<div class="col span_2_of_4">
+	<div class="contact-form">
+		<h3>留言板</h3>
+	       <form  action="<?php echo U("Index/addMessage");?>" method="post" action="contact-post.html">
+	    	<div>
+		    	<span><label>标题</label></span>
+		    	<span><input name="name" type="text" class="textbox"></span>
+		    </div>
+		    <div>
+		    	<span><label>内容</label></span>
+		    	<span><textarea name="content"> </textarea></span>
+		    </div>
+		   <div>
+		   		<span><input type="submit" value="提交"></span>
+		  </div>
+	    </form>
+
+	</div>
+</div>				
+</div>
+</div>
+</div>
 
 <div class="footer">
   <div class="box1">
 		<h4>最新资讯</h4>
-        <foreach name='news' item='i'>
-		    <a href = '{$i.url}' target="_blank"><p>{$i.title}</p></a>
-        </foreach>
+        <?php if(is_array($news)): foreach($news as $key=>$i): ?><a href = '<?php echo ($i["url"]); ?>' target="_blank"><p><?php echo ($i["title"]); ?></p></a><?php endforeach; endif; ?>
       <a href="http://www.5ifxw.com/fuli/" target="_blank"><p>福利</p></a>
   </div>
 <div class="clear"></div>			
