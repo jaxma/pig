@@ -2,7 +2,7 @@
 <script type="text/javascript">
 function delRecruitment(id) {
 	$.dialog.confirm('你确定要删除这个留言吗？', function(){
-		window.location.href="{:U('Feedback/del')}/guestbook_id/"+id;
+		window.location.href="{:U('Comment/del')}/id/"+id;
 	}, function(){
 		//$.dialog.tips('执行取消操作');
 	});
@@ -21,7 +21,7 @@ function delRecruitment(id) {
             <div class="body User">
 
 				
-				<form method="POST" action="{:U('Feedback/batch')}" name="listForm">
+				<form method="POST" action="{:U('Comment/batch')}" name="listForm">
 					<table border="0" cellpadding="0" cellspacing="0" class="center">
 						<thead>
 							<tr>
@@ -37,7 +37,7 @@ function delRecruitment(id) {
 						<tbody>
 							<foreach name="recruitmentList" item="vo">
 							<tr>
-								<td>{$vo.guestbook_id}</td>
+								<td>{$vo.id}</td>
 								<th>{$vo.name}</th>
 								<!-- <th>{$vo.phone}</th>
 								<th>{$vo.email}</th> -->
@@ -45,8 +45,8 @@ function delRecruitment(id) {
 								<th>{$vo.add_time}</th>
 								<td>
 									<span>
-										<a title="查看详情" href="{:U('Feedback/edit',array('id'=>$vo['guestbook_id']))}"><img width="16" height="16" border="0" src="__PUBLIC__/Admin/Img/icon_edit.gif"></a>&nbsp;
-										<a title="移除" onclick="delRecruitment('{$vo.guestbook_id}')" href="javascript:;"><img width="16" height="16" border="0" src="__PUBLIC__/Admin/Img/icon_drop.gif"></a>
+										<a title="查看详情" href="{:U('Comment/edit',array('id'=>$vo['id']))}"><img width="16" height="16" border="0" src="__PUBLIC__/Admin/Img/icon_edit.gif"></a>&nbsp;
+										<a title="移除" onclick="delRecruitment('{$vo.id}')" href="javascript:;"><img width="16" height="16" border="0" src="__PUBLIC__/Admin/Img/icon_drop.gif"></a>
 									</span>
 								</td>
 							</tr>

@@ -43,6 +43,7 @@ class FeedbackAction extends CommonAction {
     $M_Guestbook  = M('Guestbook');
     $guestbook_id= intval($_GET['guestbook_id']);
     $oldRow = $M_Guestbook->where("guestbook_id=" . $guestbook_id)->find();
+    M('Comment')->where("gid=" . $guestbook_id)->delete();
     if ($M_Guestbook->where("guestbook_id=" . $guestbook_id)->delete()) {
       parent::admin_log(addslashes($oldRow['description']),'remove','recruitment');
       /* 删除旧图片 */

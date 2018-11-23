@@ -51,9 +51,9 @@ class CommentAction extends CommonAction {
         @unlink("./".$oldRow['thumb_img']);
         @unlink("./".$oldRow['original_img']);
       }
-      $this->success("成功删除",U("Feedback/index"));
+      $this->success("成功删除",U("Comment/index"));
     } else {
-      $this->error("删除失败，可能是不存在该ID的记录",U("Feedback/index"));
+      $this->error("删除失败，可能是不存在该ID的记录",U("Comment/index"));
     } 
     }
 
