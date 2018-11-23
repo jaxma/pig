@@ -29,43 +29,175 @@
     </div>
 </div>
 
+<div class="fluid_container">
+          <div class="camera_wrap camera_azure_skin">
+            <div data-thumb="__IMG__/slides/thumbs/slider1.jpg" data-src="__IMG__/slides/slider1.jpg">
+                          </div>
+            <div data-thumb="__IMG__/slides/thumbs/slider2.jpg" data-src="__IMG__/slides/slider2.jpg">
+          </div>
+     </div>
+</div><div class="tlinks">Collect from <a href="http://www.yangsi.tk/" >宠物家园</a></div>
 <div class="clear"></div>
-<div class="main">
+
 <div class="content-bg">
-<div class="section group">				
-<div class="col span_1_of_2">
-<div class="contact_info">
-	<h3>留言列表</h3>
-<?php if(is_array($guestbook)): foreach($guestbook as $key=>$i): ?><a style = "color:black;" href="<?php echo U('Index/freeback2', array('guestbook_id'=>$i['guestbook_id']));?>"><h4>※<?php echo (mb_substr($i["name"],0,15,'UTF-8')); ?></h4></a><?php endforeach; endif; ?>
-</div>
-<br>
-<div class="company_address">
- 	<h3>邮箱地址 :</h3>
-	 	<p>Email: <span>1105190775@qq.com</span></p>
-</div>
-</div>				
-<div class="col span_2_of_4">
-	<div class="contact-form">
-		<h3>留言板</h3>
-	       <form  action="<?php echo U("Index/addMessage");?>" method="post" action="contact-post.html">
-	    	<div>
-		    	<span><label>标题</label></span>
-		    	<span><input name="name" type="text" class="textbox"></span>
-		    </div>
-		    <div>
-		    	<span><label>内容</label></span>
-		    	<span><textarea name="content"> </textarea></span>
-		    </div>
-		   <div>
-		   		<span><input type="submit" value="提交"></span>
-		  </div>
-	    </form>
+<div class="grid-list-main">
+	<div class="grid-list-btm">
+		<h4><?php echo ($detail["name"]); ?></h4>
+		<h2><?php echo (date('Y-m-d h:i',$detail["add_time"])); ?></h2>
+		<p><?php echo ($detail["content"]); ?></p>
+	</div>	
+
+	<div class="col span_2_of_4">
+		<div class="contact-form">
+		       <form  action="<?php echo U("Index/addComment");?>" method="post" action="contact-post.html">
+		    	<div>
+			    	<!-- <span class = "comment"><label>评论</label></span> -->
+			    	<span>
+			    		<input name="content" type="text" class="textbox" value="">
+			    	</span>
+				   	<img id="portrait" src="__IMG__/tm-img-01-tn.jpg" value="" style = "width:100px;height:100px;" > 
+				   	<select class="si" >
+				   		<option value="1">选择头像</option>
+				   		<option value="1">清晨</option>
+				   		<option value="2">海滩</option>
+				   		<option value="3">哈士奇</option>
+				   		<option value="4">古堡</option>
+				   		<option value="5">花</option>
+				   		<option value="6">女孩</option>
+				   		<option value="7">雪狐</option>
+				   		<option value="8">水母</option>
+				   		<option value="9">冲浪</option>
+				   	</select>
+			    </div>
+			   <div>
+			   		<span>
+			   			<input type="submit" value="回复">
+			   			<input type="hidden" name="gid" value="<?php echo ($detail["guestbook_id"]); ?>">
+			   			<input type="hidden" name="img" value="" id="headpic">
+			   		</span>
+			  </div>
+		    </form>
+		</div>
+	</div>
+		
+	<span class = "comment_title"><label>评论：</label></span>
+	<?php if(empty($comments)): ?><div class="grid-list-btm pl">
+	 		<p>
+	 			<span class = "fk">暂无评论</span> 
+	 		</p>
+	</div>
+	<?php else: ?>
+	<div class="grid-list-btm pl">
+        <?php if(is_array($comments)): foreach($comments as $key=>$i): ?><p data-id="<?php echo ($i["id"]); ?>">
+				<img src="<?php echo ($i["img"]); ?>" value="" style = "width:40px;height:40px;" > 
+	 			<span class = "fk"><?php echo ($i["name"]); ?>：<?php echo ($i["content"]); ?></span> 
+	 			<span class = "more" disabled = "true">更多</span>
+	 		</p><?php endforeach; endif; ?>
+	</div><?php endif; ?>
+	<script>
+			$('.si').change(function(){
+				picnum = $(this).val();
+				if(picnum == '选择头像')picnum = 1;
+				$('#portrait').attr('src',"__IMG__/tm-img-0"+picnum+"-tn.jpg");
+				$('#headpic').attr('value',"__IMG__/tm-img-0"+picnum+"-tn.jpg");
+			})
+			addRebackUrl = "<?php echo U('Index/addReback');?>";
+			getMoreReback = "<?php echo U('Index/getMoreReback');?>"; 
+			borderColor = Math.floor(Math.random () * 900) + 100;
+			$("body").on("click",".fk",function(){
+					$('.reback').remove();
+					html = "<div class='reback'>";
+						html += "<div>";
+							html += "<span>";
+								html += "<input name='content' type='text' class='textbox rebackinp' value=''>";
+							html += "</span>";
+						html += "</div>";
+
+						html += "<div>";
+							html += "<span>";
+								html += "<button class='comment_button cb'>回复</button>";
+							html += "</span>";
+						html += "</div>";
+					html += "</div>";
+					$(this).after(html);
+			})
+			$("body").on("click",".comment_button",function(){
+				pid = $('.reback').prev().parent().data('id');
+				con = $('.rebackinp').val();
+				$.ajaxSettings.async = false;
+				$.post(
+					addRebackUrl,
+					{
+						gid:'<?php echo ($detail["guestbook_id"]); ?>',
+						pid:pid,
+						con:con
+					},
+					function(e){
+						v = e.list;
+						temp = '';
+						temp += "<p data-id='"+v.id+"' data-pid="+pid+">";
+						temp += "<span class='fk' style='border-left:solid 5px #"+borderColor+"'>"+v.name+"&nbsp;回复&nbsp;"+v.pname+"："+v.content;
+						temp += "</span>";
+						temp += "<span class='more'>更多";
+						temp += "</span>";
+						temp += "</p>";
+						$('.reback').parent().after(temp);
+						$('.reback').remove();
+					}
+				);
+			})
+			$("body").on("click",".more",function(){
+				pid = $(this).parent().data('id');
+				$this = $(this);
+				$.ajaxSettings.async = false;
+				$.post(
+					getMoreReback,
+					{
+						pid:pid
+					},
+					function(e){
+						if(e.code == 1){
+							temp = '';
+							$.each(e.list,function(k,v){
+								temp += "<p data-id='"+v.id+"'>";
+								temp += "<span class='fk' style='border-left:solid 5px #"+borderColor+"'>"+v.name+"&nbsp;回复&nbsp;"+v.pname+"："+v.content;
+								temp += "</span>";
+								temp += "<span class='more'>更多";
+								temp += "</span>";
+								temp += "</p>";
+							})
+							$('.pl p').each(function(){
+								dpid = $(this).data('pid');
+								if(dpid && dpid == pid){
+									$(this).remove();
+								}
+							})
+							$this.parent().after(temp);
+							$this.text('');
+						}else{
+							alert('没有更多评论！');
+							return;
+						}
+					}
+				)
+			})
+	</script>
 
 	</div>
-</div>				
+
+		<div class="sidebar">
+		<div class="text1">
+			<h2>Other Message</h2>
+		</div>
+		<div class="text1-nav">
+		<ul>
+        <?php if(is_array($goods)): foreach($goods as $key=>$i): ?><li><a href="<?php echo U('Index/freeback2', array('guestbook_id'=>$i['guestbook_id']));?>"><?php echo (mb_substr($i["name"],0,15,'UTF-8')); ?></a></li><?php endforeach; endif; ?>
+	    </ul>
+	</div>
+	</div>
+	<div class="clear"></div>
 </div>
-</div>
-</div>
+
 
 <div class="footer">
   <div class="box1">
