@@ -1,23 +1,67 @@
 <?php
-//1. 将timestamp , nonce , token 按照字典排序  
-$timestamp = $_GET['timestamp'];  
-$nonce = $_GET['nonce'];  
-$token = "yancy";  
-$signature = $_GET['signature'];  
-$array = array($timestamp,$nonce,$token);  
-sort($array);  
+// //token 验证
+// //1. 将timestamp , nonce , token 按照字典排序  
+// $timestamp = $_GET['timestamp'];  
+// $nonce = $_GET['nonce'];  
+// $token = "yancy";  
+// $signature = $_GET['signature'];  
+// $array = array($timestamp,$nonce,$token);  
+// sort($array);  
   
-//2.将排序后的三个参数拼接后用sha1加密  
-$tmpstr = implode('',$array);  
-$tmpstr = sha1($tmpstr);  
+// //2.将排序后的三个参数拼接后用sha1加密  
+// $tmpstr = implode('',$array);  
+// $tmpstr = sha1($tmpstr);  
   
-//3. 将加密后的字符串与 signature 进行对比, 判断该请求是否来自微信  
-if($tmpstr == $signature)  
-{  
-    echo $_GET['echostr'];  
-    exit;  
-}  
-
+// //3. 将加密后的字符串与 signature 进行对比, 判断该请求是否来自微信  
+// if($tmpstr == $signature)  
+// {  
+//     echo $_GET['echostr'];  
+//     exit;  
+// }  
+//装载模板文件
+include_once("wx_tpl.php");
+ 
+//获取微信发送数据
+$postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
+ 
+  //返回回复数据
+if (!empty($postStr)){
+          
+    	//解析数据
+          $postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
+    	//发送消息方ID
+          $fromUsername = $postObj->FromUserName;
+    	//接收消息方ID
+          $toUsername = $postObj->ToUserName;
+   	 //消息类型
+          $form_MsgType = $postObj->MsgType;
+          
+    	//事件消息
+          if($form_MsgType=="event")
+          {
+            //获取事件类型
+            $form_Event = $postObj->Event;
+            //订阅事件
+            if($form_Event=="subscribe")
+            {
+              //回复欢迎文字消息
+              $msgType = "text";
+              $contentStr = "感谢您关注我的微信！[愉快]";
+              $resultStr = sprintf($textTpl, $fromUsername, $toUsername, time(), $msgType, $contentStr);
+              echo $resultStr;
+              exit;
+            }
+          
+          }
+          
+  }
+  else 
+  {
+          echo "";
+          exit;
+  }
+ 
+ 
 ini_set('date.timezone', 'Asia/Shanghai');
 define('THINK_PATH', './ThinkPHP/');
 define('APP_NAME', 'Home');
