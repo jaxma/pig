@@ -31,7 +31,7 @@ class IndexAction extends CommonAction {
             'appid' => C('APP_ID'), //填写高级调用功能的app id
             'appsecret' => C('APP_SECRET'), //填写高级调用功能的密钥
         );
-        $list = $this->wechat_obj = new Wechat($options);
+        // $list = $this->wechat_obj = new Wechat($options);
         // $list = $this->wechat_obj->getMenu();
 
           // $button = array (
@@ -60,9 +60,9 @@ class IndexAction extends CommonAction {
           // );
 
         // $list = $this->wechat_obj->createMenu($button);
-        p($list);
-        echo 'test';
-        die;
+        // p($list);
+        // echo 'test';
+        // die;
         
 		$goods_id = $_REQUEST['goods_id'];
 		$detail = M('goods')->where('goods_id = '.$goods_id)->find();
