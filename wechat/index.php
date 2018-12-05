@@ -6,7 +6,7 @@
 //define your token
 define("TOKEN", "yancy");
 $wechatObj = new wechatCallbackapiTest();
-// $wechatObj->valid();
+$wechatObj->valid();
 $wechatObj->responseMsg();//调用回复消息的函数
  
 class wechatCallbackapiTest
