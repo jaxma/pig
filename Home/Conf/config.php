@@ -8,11 +8,13 @@ $config_arr2 = array(
 		'__JS__'=>__ROOT__.'/Public/Home/Js',
 		'__CSS__'=>__ROOT__.'/Public/Home/Css',
 	),
-	'APP_TOKEN'=>'yancy',
+	//测试号token yancycs 正式号 yancy
+	'APP_TOKEN'=>'yancycs',
 	'APP_AESK'=>'',
 	//公众号
 	// 'APP_ID'=>'wx8e6bdfe8474ee2d9',
 	// 'APP_SECRET'=>'416d5f7db7cbe77340c22ab5842c06cd',
+	
 	//测试号 公众号已关注
 	'APP_ID'=>'wx51eab2f84345c794',
 	'APP_SECRET'=>'c7105ee684882bf742b76cfa0d7744ed',

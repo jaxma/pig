@@ -24,8 +24,8 @@ class wechatCallbackapiTest
     }
 
 
-   public function responseMsg()
-    {
+   public function responseMsg(){
+    
         $postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
 
         if (!empty($postStr)){
