@@ -11,11 +11,11 @@ $config_arr2 = array(
 	'APP_TOKEN'=>'yancy',
 	'APP_AESK'=>'',
 	//公众号
-	// 'APP_ID'=>'wx8e6bdfe8474ee2d9',
-	// 'APP_SECRET'=>'416d5f7db7cbe77340c22ab5842c06cd',
+	'APP_ID'=>'wx8e6bdfe8474ee2d9',
+	'APP_SECRET'=>'416d5f7db7cbe77340c22ab5842c06cd',
 	//测试号
-	'APP_ID'=>'wx51eab2f84345c794',
-	'APP_SECRET'=>'c7105ee684882bf742b76cfa0d7744ed',
+	// 'APP_ID'=>'wx51eab2f84345c794',
+	// 'APP_SECRET'=>'c7105ee684882bf742b76cfa0d7744ed',
     //'OUTPUT_ENCODE'=>true,
     //'URL_HTML_SUFFIX'=>'html|xml|shtml',
     //'URL_PATHINFO_DEPR'=>'-',
