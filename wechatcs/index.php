@@ -51,8 +51,6 @@ class wechatCallbackapiTest
                         }else{
                           echo "Input something...";
                         }
-         
-                }     
                 if($postObj->MsgType=='event'){
                   if($postObj->Event == 'CLICK'){
                     if($postObj->EventKey == 'TEST_V2_1'){
