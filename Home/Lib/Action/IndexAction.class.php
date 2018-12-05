@@ -24,15 +24,16 @@ class IndexAction extends CommonAction {
 	}
 
 	public function index(){
-        // import("ORG.Wechat.Wechat");
-        // $options = array(
-        //     'token' => C('APP_TOKEN'), //填写您设定的key
-        //     'encodingaeskey' => C('APP_AESK'), //填写加密用的EncodingAESKey，如接口为明文模式可忽略
-        //     'appid' => C('APP_ID'), //填写高级调用功能的app id
-        //     'appsecret' => C('APP_SECRET'), //填写高级调用功能的密钥
-        // );
-        // $this->wechat_obj = new Wechat($options);
-        // p($this->wechat_obj);
+        import("ORG.Wechat.Wechat");
+        $options = array(
+            'token' => C('APP_TOKEN'), //填写您设定的key
+            'encodingaeskey' => C('APP_AESK'), //填写加密用的EncodingAESKey，如接口为明文模式可忽略
+            'appid' => C('APP_ID'), //填写高级调用功能的app id
+            'appsecret' => C('APP_SECRET'), //填写高级调用功能的密钥
+        );
+        $this->wechat_obj = new Wechat($options);
+        p($this->wechat_obj);
+        die;
         
 		$goods_id = $_REQUEST['goods_id'];
 		$detail = M('goods')->where('goods_id = '.$goods_id)->find();
