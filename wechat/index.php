@@ -200,34 +200,53 @@ class wechatCallbackapiTest
       
   private function checkSignature()
   {
-    // you must define TOKEN by yourself
-    //判断是否定义了TOKEN,如果没有就抛出一个异常
-    if (!defined("TOKEN")) {
-      throw new Exception('TOKEN is not defined!');
-    }
+    // // you must define TOKEN by yourself
+    // //判断是否定义了TOKEN,如果没有就抛出一个异常
+    // if (!defined("TOKEN")) {
+    //   throw new Exception('TOKEN is not defined!');
+    // }
       
-    $signature = $_GET["signature"];//接受微信加密签名
-    $timestamp = $_GET["timestamp"];//接受时间戳
-    $nonce = $_GET["nonce"];//接受随机数
+    // $signature = $_GET["signature"];//接受微信加密签名
+    // $timestamp = $_GET["timestamp"];//接受时间戳
+    // $nonce = $_GET["nonce"];//接受随机数
           
-    $token = TOKEN;//把TOKEN常量赋值给$token
-    //把相关参数组装成数组
-    $tmpArr = array($token, $timestamp, $nonce);
-    // use SORT_STRING rule
-    //排序
-    sort($tmpArr, SORT_STRING);
-    //把排序后的数组转换成字符串
-    $tmpStr = implode( $tmpArr );
-    //通过哈希算法加密
-    $tmpStr = sha1( $tmpStr );
-    //与加密签名进行对比
-    if( $tmpStr == $signature ){
-      //相同返回true
-      return true;
-    }else{
-      //不同返回false
-      return false;
-    }
+    // $token = TOKEN;//把TOKEN常量赋值给$token
+    // //把相关参数组装成数组
+    // $tmpArr = array($token, $timestamp, $nonce);
+    // // use SORT_STRING rule
+    // //排序
+    // sort($tmpArr, SORT_STRING);
+    // //把排序后的数组转换成字符串
+    // $tmpStr = implode( $tmpArr );
+    // //通过哈希算法加密
+    // $tmpStr = sha1( $tmpStr );
+    // //与加密签名进行对比
+    // if( $tmpStr == $signature ){
+    //   //相同返回true
+    //   return true;
+    // }else{
+    //   //不同返回false
+    //   return false;
+    // }
+    $timestamp = $_GET['timestamp'];  
+    $nonce = $_GET['nonce'];  
+    $token = "yancy";  
+    $signature = $_GET['signature'];  
+    $array = array($timestamp,$nonce,$token);  
+    sort($array);  
+      
+    //2.将排序后的三个参数拼接后用sha1加密  
+    $tmpstr = implode('',$array);  
+    $tmpstr = sha1($tmpstr);  
+      
+    //3. 将加密后的字符串与 signature 进行对比, 判断该请求是否来自微信  
+    if($tmpstr == $signature)  
+    {  
+        // echo $_GET['echostr'];  
+        // exit; 
+        return true; 
+    }  
+
   }
 }
   
