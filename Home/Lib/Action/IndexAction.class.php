@@ -32,7 +32,8 @@ class IndexAction extends CommonAction {
             'appsecret' => C('APP_SECRET'), //填写高级调用功能的密钥
         );
         $this->wechat_obj = new Wechat($options);
-        p($this->wechat_obj);
+        $list = $this->wechat_obj->getMenu();
+        p($list);
         die;
         
 		$goods_id = $_REQUEST['goods_id'];
