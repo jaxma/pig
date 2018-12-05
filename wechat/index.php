@@ -10,7 +10,7 @@ define("TOKEN", "yancy");
 //实例化微信对象
 $wechatObj = new wechatCallbackapiTest();
 //验证成功后注释valid方法
-//$wechatObj->valid();
+$wechatObj->valid();
 //开启自动回复功能
 $wechatObj->responseMsg();
   
