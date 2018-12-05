@@ -1,9 +1,12 @@
 <?php 
-define("TOKEN", "peng"); 
+define("TOKEN", "yancy"); 
 $wechatObj = new wechatCallbackapiTest(); 
-if (!isset($_GET['echostr'])) { $wechatObj->responseMsg(); //调用responseMsg()接收消息 
-}else{ $wechatObj->valid(); //其实已经不再调用 
-} class wechatCallbackapiTest
+if (!isset($_GET['echostr'])) { 
+$wechatObj->responseMsg(); //调用responseMsg()接收消息 
+}else{ 
+$wechatObj->valid(); //其实已经不再调用 
+} 
+class wechatCallbackapiTest
 { 
 private $access_token; 
 public function __construct(){ 
