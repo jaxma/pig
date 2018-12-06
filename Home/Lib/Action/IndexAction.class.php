@@ -21,7 +21,6 @@ class IndexAction extends CommonAction {
 	    	if($k <= 4)$news[$k]['title'] = $v;
 	    }
 		$this->assign('news',$news);
-        setLog('testest');
 	}
 
 	public function index(){
