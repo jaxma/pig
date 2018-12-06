@@ -14,15 +14,13 @@ class WechatAction extends CommonAction {
             'appsecret' => C('APP_SECRET'), //填写高级调用功能的密钥
         );
         $obj = $this->wechat_obj = new Wechat($options);
-        setlog(1);
         $postStr = file_get_contents("php://input");
         $Event = $obj->getRev()->getRevEvent();
-        // $receive_id = $obj->getRev()->getRevTo();
-        setlog($Event);
-        setlog(2);
-        // if($Event['key'] == EVENT_MENU_CLICK){
-        //     $obj->reply('hellow');
-        // }
+        // setlog($Event);
+        if($Event['event'] == 'click' && $Event['key'] == 'TEST_V2_1'){
+            setlog('inhere');
+            $obj->reply('faker');
+        }
 
         // $list = $this->wechat_obj->getMenu();
           // $button = array (
