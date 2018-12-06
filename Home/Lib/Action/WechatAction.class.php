@@ -17,7 +17,7 @@ class WechatAction extends CommonAction {
         setlog(1);
         $postStr = file_get_contents("php://input");
         $Event = $obj->getRevEvent();
-        $receive_id = $this->wechat->getRev()->getRevTo();
+        $receive_id = $obj->getRev()->getRevTo();
         setlog($postStr);
         setlog($obj);
         setlog($receive_id);
