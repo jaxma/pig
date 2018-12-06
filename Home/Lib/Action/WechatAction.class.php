@@ -9,16 +9,20 @@ class WechatAction extends CommonAction {
         import("ORG.Wechat.Wechat");
         $options = array(
             'token' => C('APP_TOKEN'), //填写您设定的key
-            'encodingaeskey' => C('APP_AESK'), //填写加密用的EncodingAESKey，如接口为明文模式可忽略
+            // 'encodingaeskey' => C('APP_AESK'), //填写加密用的EncodingAESKey，如接口为明文模式可忽略
             'appid' => C('APP_ID'), //填写高级调用功能的app id
             'appsecret' => C('APP_SECRET'), //填写高级调用功能的密钥
         );
         $obj = $this->wechat_obj = new Wechat($options);
+        $postStr = file_get_contents("php://input");
         $Event = $obj->getRevEvent();
-        setlog($Event);
-        if($Event['key'] == EVENT_MENU_CLICK){
-            $obj->reply('hellow');
-        }
+        $receive_id = $this->wechat->getRev()->getRevTo();
+        setlog($postStr);
+        setlog($obj);
+        setlog($receive_id);
+        // if($Event['key'] == EVENT_MENU_CLICK){
+        //     $obj->reply('hellow');
+        // }
 
         // $list = $this->wechat_obj->getMenu();
           // $button = array (
