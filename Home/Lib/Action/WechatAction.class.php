@@ -17,10 +17,8 @@ class WechatAction extends CommonAction {
         setlog(1);
         $postStr = file_get_contents("php://input");
         $Event = $obj->getRevEvent();
-        $receive_id = $obj->getRev()->getRevTo();
-        setlog($postStr);
-        setlog($obj);
-        setlog($receive_id);
+        // $receive_id = $obj->getRev()->getRevTo();
+        setlog($Event);
         setlog(2);
         // if($Event['key'] == EVENT_MENU_CLICK){
         //     $obj->reply('hellow');
