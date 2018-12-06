@@ -15,9 +15,9 @@ class WechatAction extends CommonAction {
         );
         $obj = $this->wechat_obj = new Wechat($options);
         $Event = $obj->getRevEvent();
-        // if($Event['key'] == 'TEST_V2_1'){
+        if($Event['key'] == EVENT_MENU_CLICK){
             $obj->reply('hellow');
-        // }
+        }
 
         // $list = $this->wechat_obj->getMenu();
           // $button = array (
