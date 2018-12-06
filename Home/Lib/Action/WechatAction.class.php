@@ -19,7 +19,7 @@ class WechatAction extends CommonAction {
         // setlog($Event);
         if($Event['event'] == 'CLICK' && $Event['key'] == 'TEST_V2_1'){
             setlog('inhere');
-            $obj->reply('faker');
+            $obj->text('faker')->reply();
         }else{
           setlog($Event['event']);
           setlog($Event['key']);
