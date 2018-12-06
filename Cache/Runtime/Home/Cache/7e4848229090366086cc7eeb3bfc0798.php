@@ -28,7 +28,7 @@
         <a href='<?php echo U("Index/index2");?>'>宠物图片</a>
     </div>
 </div>
-
+qwe
 <div class="fluid_container">
           <div class="camera_wrap camera_azure_skin">
             <div data-thumb="__IMG__/slides/thumbs/slider1.jpg" data-src="__IMG__/slides/slider1.jpg">
