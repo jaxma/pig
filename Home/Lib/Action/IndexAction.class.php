@@ -20,7 +20,6 @@ class IndexAction extends CommonAction {
 	    foreach ($new_title as $k => $v) {
 	    	if($k <= 4)$news[$k]['title'] = $v;
 	    }
-        setlog('123');
 		$this->assign('news',$news);
 	}
 
