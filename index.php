@@ -8,7 +8,7 @@ define("WEB_ROOT", str_replace("\\",'/',dirname(__FILE__)) . "/");
 define('WEB_CACHE_PATH', WEB_ROOT."Cache/");//网站当前路径
 define("RUNTIME_PATH", WEB_ROOT . "Cache/Runtime/Home/");
 define("QQ_NEWS", 'linkto');
-define('APP_DEBUG', false);//开启之后注意模块名大写
+define('APP_DEBUG', true);//开启之后注意模块名大写
 define('WEB_URL', $_SERVER['SERVER_NAME']);
 if (!file_exists(WEB_ROOT.'Common/systemConfig.php')) {
     exit;

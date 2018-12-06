@@ -926,4 +926,19 @@ function makeNickname(){
 
     return $nickname;
 }
+
+function setLog($m_array, $prex = "") {
+    if (is_array($m_array)) {
+        $m_array = json_encode($m_array);
+    }
+    import('Class.Logs', APP_PATH);
+    $dir = "Cache/log/" . date("Y/m", time());
+    if (!empty($prex)) {
+        $filename = $prex . "-" . date("d", time()) . ".log";
+    } else {
+        $filename = date("d", time()) . ".log";
+    }
+    $logs = new Logs("", $dir, $filename);
+    $logs->setlog($m_array);
+}
 ?>
