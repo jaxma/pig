@@ -17,9 +17,12 @@ class WechatAction extends CommonAction {
         $postStr = file_get_contents("php://input");
         $Event = $obj->getRev()->getRevEvent();
         // setlog($Event);
-        if($Event['event'] == 'click' && $Event['key'] == 'TEST_V2_1'){
+        if($Event['event'] == 'CLICK' && $Event['key'] == 'TEST_V2_1'){
             setlog('inhere');
             $obj->reply('faker');
+        }else{
+          setlog($Event['event']);
+          setlog($Event['key']);
         }
 
         // $list = $this->wechat_obj->getMenu();
