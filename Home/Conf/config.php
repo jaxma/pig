@@ -22,6 +22,7 @@ $config_arr2 = array(
     //'URL_HTML_SUFFIX'=>'html|xml|shtml',
     //'URL_PATHINFO_DEPR'=>'-',
     //'URL_MODEL' => 2,
+    'LOG_RECORD' => true, // 开启日志记录 
 );
 return array_merge($config_arr1, $config_arr2);
 ?>
