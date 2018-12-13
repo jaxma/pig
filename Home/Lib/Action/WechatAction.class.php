@@ -16,7 +16,7 @@ class WechatAction extends CommonAction {
         $this->wechat_obj = new Wechat($options);
         // $postStr = file_get_contents("php://input");
         $menu_access_token = $this->wechat_obj->checkAuth();
-        p($menu_access_token);die;
+        // p($menu_access_token);die;
         $Event = $this->wechat_obj->getRev()->getRevEvent();
         if($Event['event'] == 'CLICK' && $Event['key'] == 'TEST_V2_1'){
             $this->wechat_obj->text('faker')->reply();
