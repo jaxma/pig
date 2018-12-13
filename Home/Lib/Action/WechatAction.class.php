@@ -15,7 +15,7 @@ class WechatAction extends CommonAction {
         );
         $this->wechat_obj = new Wechat($options);
         // $postStr = file_get_contents("php://input");
-        $t = $this->wechat_obj = checkAuth();
+        $t = $this->wechat_obj->checkAuth();
         echo 123;
         p($t);die;
         $Event = $this->wechat_obj->getRev()->getRevEvent();
