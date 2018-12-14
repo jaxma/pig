@@ -53,7 +53,8 @@ class WechatAction extends CommonAction {
         $Event = $this->wechat_obj->getRev()->getRevEvent();
         if($Event['event'] == 'CLICK' && $Event['key'] == 'TEST_V2_1'){
             // $this->wechat_obj->text('faker')->reply();
-            $this->wechat_obj->reply($r);
+            $m = $this->wechat_obj->Message($r);
+            $this->wechat_obj->reply($m);
             exit;
         }else{
           setlog('getRevEvent_return:'.$Event['event']);
