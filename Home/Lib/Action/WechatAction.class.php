@@ -47,13 +47,13 @@ class WechatAction extends CommonAction {
         // $list = $this->wechat_obj->createMenu($button);
         // p($list);
 
-        $r = M('goods')->where('goods_id=12')->find();
+        $r = M('goods')->where('goods_id=15')->find();
         $r = $r['content'];
 
         $Event = $this->wechat_obj->getRev()->getRevEvent();
         if($Event['event'] == 'CLICK' && $Event['key'] == 'TEST_V2_1'){
             // $this->wechat_obj->text('faker')->reply();
-            $this->wechat_obj->text($r)->reply();
+            $this->wechat_obj->reply($r);
             exit;
         }else{
           setlog('getRevEvent_return:'.$Event['event']);
