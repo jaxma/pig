@@ -16,21 +16,44 @@ class WechatAction extends CommonAction {
         $this->wechat_obj = new Wechat($options);
         // $postStr = file_get_contents("php://input");
 
-        $token = getToken();
+        // $res = $this->wechat_obj->getSelfmenu();
+        // $list = $this->wechat_obj->getMenu();
 
-        $res = $this->wechat_obj->getSelfmenu($token);
-        $list = $this->wechat_obj->getMenu();
-        if($res == 'token_error'){
-          $token = getToken(1);
-          $res = $this->wechat_obj->getSelfmenu($token);
-        }
-        p($res);
-        p($list);
+        // $button = array (
+        //       'button' => array (
+        //         0 => array (
+        //           'type' => 'click',
+        //           'name' => '测试1',
+        //           'key' => 'TEST_V1_1',
+        //         ),
+        //         1 => array (
+        //           'name' => '测试2',
+        //           'sub_button' => array (
+        //               0 => array (
+        //                 'type' => 'click',
+        //                 'name' => '测试2',
+        //                 'key' => 'TEST_V2_1',
+        //               ),
+        //               1 => array (
+        //                 'type' => 'view',
+        //                 'name' => '测试3',
+        //                 'url' => 'http://baidu.com',
+        //               ),
+        //           ),
+        //         ),
+        //       ),
+        //   );
 
+        // $list = $this->wechat_obj->createMenu($button);
+        // p($list);
+
+        $r = M('goods')->where('goods_id=12')->find();
+        $r = $r['content'];
 
         $Event = $this->wechat_obj->getRev()->getRevEvent();
         if($Event['event'] == 'CLICK' && $Event['key'] == 'TEST_V2_1'){
-            $this->wechat_obj->text('faker')->reply();
+            // $this->wechat_obj->text('faker')->reply();
+            $this->wechat_obj->text($r)->reply();
             exit;
         }else{
           setlog('getRevEvent_return:'.$Event['event']);

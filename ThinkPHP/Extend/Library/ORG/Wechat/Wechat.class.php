@@ -1312,6 +1312,7 @@ class Wechat
 		}
 
 		$result = $this->http_get(self::API_URL_PREFIX.self::AUTH_URL.'appid='.$appid.'&secret='.$appsecret);
+
 		if ($result)
 		{
 			$json = json_decode($result,true);
@@ -1332,64 +1333,28 @@ class Wechat
 	 * 获取自定义菜单
 	 * @param string $token access_token
 	 */
-	public function getSelfmenu($token=''){
-		if($token){
-			$result = $this->http_get(self::API_URL_PREFIX.self::CURRENT_SELFMENU_URL.'access_token='.$token);
-			// return self::API_URL_PREFIX.self::CURRENT_SELFMENU_URL.'access_token='.$token;die;
-			if ($result)
-			{
-				$json = json_decode($result,true);
-				if (!$json || isset($json['errcode'])) {
-					$this->errCode = $json['errcode'];
-					$this->errMsg = $json['errmsg'];
-					if($json['errcode'] == 40001){
-						return 'token_error';
-						exit;
-					}
-	                setLog('wechat_return:'.print_r($json,1),'wechat_api_error');
-					return false;
-				}
-				return $json;
-			}
-		}else{
-			return 'token necessary';
-		}
-		return false;
-	}
-    /**
-	 * 设置access_token
-	 * @param string $appid 如在类初始化时已提供，则可为空
-	 * @param string $appsecret 如在类初始化时已提供，则可为空
-	 * @param string $token 手动指定access_token，非必要情况不建议用
-	 */
-    public function setAccessToken($appid='',$appsecret='',$token=''){
-        if (!$appid || !$appsecret) {
-			$appid = $this->appid;
-			$appsecret = $this->appsecret;
-		}
-		if ($token) { //手动指定token，优先使用
-		    $this->access_token=$token;
-		    return $this->access_token;
-		}
-        
-        $result = $this->http_get(self::API_URL_PREFIX.self::AUTH_URL.'appid='.$appid.'&secret='.$appsecret);
-        if ($result)
+	public function getSelfmenu(){
+		if (!$this->access_token && !$this->checkAuth()) return false;
+		$result = $this->http_get(self::API_URL_PREFIX.self::CURRENT_SELFMENU_URL.'access_token='.$this->access_token);
+		// return self::API_URL_PREFIX.self::CURRENT_SELFMENU_URL.'access_token='.$token;die;
+		if ($result)
 		{
 			$json = json_decode($result,true);
 			if (!$json || isset($json['errcode'])) {
 				$this->errCode = $json['errcode'];
 				$this->errMsg = $json['errmsg'];
+				if($json['errcode'] == 40001){
+					return 'token_error';
+					exit;
+				}
+                setLog('wechat_return:'.print_r($json,1),'wechat_api_error');
 				return false;
 			}
-			$this->access_token = $json['access_token'];
-            
-            $row = array("access_token"=>$json['access_token'],"set_time"=>time());
-
-			return $this->access_token;
+			return $json;
 		}
 		return false;
-        
-    }
+	}
+
 	/**
 	 * 删除验证数据
 	 * @param string $appid
@@ -1737,11 +1702,23 @@ class Wechat
 				$this->errMsg = $json['errmsg'];
 				return false;
 			}
-			return $result;
+	        $a = file_get_contents(self::UPLOAD_MEDIA_URL.self::MEDIA_GET_URL.'access_token='.$this->access_token.'&media_id='.$media_id);
+        	$file_dir = $_SERVER['DOCUMENT_ROOT'].__ROOT__.'/Uploads/wechat/img/';
+        	$this->createDir($file_dir);
+        	$file_name = 'img_'.time().'.jpg';
+	        $resource = fopen($file_dir.$file_name, 'w+');
+	        fwrite($resource, $a);
+	        fclose($resource);
+			return $resource;
 		}
 		return false;
 	}
 
+    function createDir ($dir)
+    {
+        return is_dir($dir) or
+                 ($this->createDir(dirname($dir)) and mkdir($dir, 0777));
+    }
 	/**
 	 * 上传图文消息素材(认证后的订阅号可用)
 	 * @param array $data 消息结构{"articles":[{...}]}

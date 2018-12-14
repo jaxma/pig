@@ -9,6 +9,7 @@ $config_arr2 = array(
 		'__CSS__'=>__ROOT__.'/Public/Home/Css',
 	),
 	//测试号token yancycs 正式号 yancy
+	// 'APP_TOKEN'=>'yancy',
 	'APP_TOKEN'=>'yancycs',
 	'APP_AESK'=>'',
 	//公众号
@@ -18,6 +19,7 @@ $config_arr2 = array(
 	//测试号 公众号已关注
 	'APP_ID'=>'wx51eab2f84345c794',
 	'APP_SECRET'=>'c7105ee684882bf742b76cfa0d7744ed',
+
     //'OUTPUT_ENCODE'=>true,
     //'URL_HTML_SUFFIX'=>'html|xml|shtml',
     //'URL_PATHINFO_DEPR'=>'-',

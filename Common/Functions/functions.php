@@ -958,11 +958,11 @@ function setLog($m_array, $prex = "") {
 
         $token_res= M('accesstoken')->where(1)->order('id desc')->find();
 
-        if($token_res){
+        if($token_res && $token_res['token'] != 0){
 
           if($token_res['time'] < time() || $retrieve){
 
-            $token = $wechat_obj->setAccessToken();
+            $token = $wechat_obj->checkAuth();
             //100分钟后
             $time = time()+6000;
             $update = $token_res['update'] + 1;
@@ -978,7 +978,7 @@ function setLog($m_array, $prex = "") {
 
         }else{
 
-          $token = $this->wechat_obj->setAccessToken();
+          $token = $wechat_obj->checkAuth();
           $update = 0;
           $time = time()+6000;
           $data = array(
