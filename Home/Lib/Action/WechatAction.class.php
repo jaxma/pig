@@ -20,12 +20,12 @@ class WechatAction extends CommonAction {
 
         $res = $this->wechat_obj->getSelfmenu($token);
         $list = $this->wechat_obj->getMenu();
-        p($res);
-        p($list);
         if($res == 'token_error'){
           $token = getToken(1);
           $res = $this->wechat_obj->getSelfmenu($token);
         }
+        p($res);
+        p($list);
 
 
         $Event = $this->wechat_obj->getRev()->getRevEvent();
