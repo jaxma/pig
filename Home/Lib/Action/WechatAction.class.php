@@ -47,14 +47,19 @@ class WechatAction extends CommonAction {
         // $list = $this->wechat_obj->createMenu($button);
         // p($list);
 
-        $r = M('goods')->where('goods_id=15')->find();
-        $r = $r['content'];
+        $data = array(
+          "0"=>array(
+             'Title'=>'曾经的大猪',
+             'Description'=>'曾经...',
+             'PicUrl'=>'http://www.yangsi.tk/Public/Admin/kindeditor/attached/image/20181103/20181103063738_69669.jpg',
+            'Url'=>'http://www.yangsi.tk/'
+         ),
+        )
 
         $Event = $this->wechat_obj->getRev()->getRevEvent();
         if($Event['event'] == 'CLICK' && $Event['key'] == 'TEST_V2_1'){
             // $this->wechat_obj->text('faker')->reply();
-            $m = $this->wechat_obj->Message($r);
-            $this->wechat_obj->reply($m);
+            $this->wechat_obj->news($data)->reply();
             exit;
         }else{
           setlog('getRevEvent_return:'.$Event['event']);
