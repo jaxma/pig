@@ -81,6 +81,7 @@ class Wechat
 	const GET_TICKET_URL = '/ticket/getticket?';
 	const CALLBACKSERVER_GET_URL = '/getcallbackip?';
 	const QRCODE_CREATE_URL='/qrcode/create?';
+	const CURRENT_SELFMENU_URL='/get_current_selfmenu_info?';
 	const QR_SCENE = 0;
 	const QR_LIMIT_SCENE = 1;
 	const QRCODE_IMG_URL='https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=';
@@ -1327,7 +1328,68 @@ class Wechat
 		}
 		return false;
 	}
+	/**
+	 * 获取自定义菜单
+	 * @param string $token access_token
+	 */
+	public function getSelfmenu($token=''){
+		if($token){
+			$result = $this->http_get(self::API_URL_PREFIX.self::CURRENT_SELFMENU_URL.'access_token='.$token);
+			// return self::API_URL_PREFIX.self::CURRENT_SELFMENU_URL.'access_token='.$token;die;
+			if ($result)
+			{
+				$json = json_decode($result,true);
+				if (!$json || isset($json['errcode'])) {
+					$this->errCode = $json['errcode'];
+					$this->errMsg = $json['errmsg'];
+					if($json['errcode'] == 40001){
+						return 'token_error';
+						exit;
+					}
+	                setLog('wechat_return:'.print_r($json,1),'wechat_api_error');
+					return false;
+				}
+				return $json;
+			}
+		}else{
+			return 'token necessary';
+		}
+		return false;
+	}
+    /**
+	 * 设置access_token
+	 * @param string $appid 如在类初始化时已提供，则可为空
+	 * @param string $appsecret 如在类初始化时已提供，则可为空
+	 * @param string $token 手动指定access_token，非必要情况不建议用
+	 */
+    public function setAccessToken($appid='',$appsecret='',$token=''){
+        if (!$appid || !$appsecret) {
+			$appid = $this->appid;
+			$appsecret = $this->appsecret;
+		}
+		if ($token) { //手动指定token，优先使用
+		    $this->access_token=$token;
+		    return $this->access_token;
+		}
+        
+        $result = $this->http_get(self::API_URL_PREFIX.self::AUTH_URL.'appid='.$appid.'&secret='.$appsecret);
+        if ($result)
+		{
+			$json = json_decode($result,true);
+			if (!$json || isset($json['errcode'])) {
+				$this->errCode = $json['errcode'];
+				$this->errMsg = $json['errmsg'];
+				return false;
+			}
+			$this->access_token = $json['access_token'];
+            
+            $row = array("access_token"=>$json['access_token'],"set_time"=>time());
 
+			return $this->access_token;
+		}
+		return false;
+        
+    }
 	/**
 	 * 删除验证数据
 	 * @param string $appid

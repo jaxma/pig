@@ -942,4 +942,52 @@ function setLog($m_array, $prex = "") {
     $logs = new Logs("", $dir, $filename);
     $logs->setlog($m_array);
 }
+    /**
+     * 从access_token表里获取token
+     * @param string $retrieve 防止未知因素导致token失效，使用该参数将重新生成token
+     */
+    function getToken($retrieve = ''){
+        import("ORG.Wechat.Wechat");
+        $options = array(
+            'token' => C('APP_TOKEN'), //填写您设定的key
+            'encodingaeskey' => C('APP_AESK'), //填写加密用的EncodingAESKey，如接口为明文模式可忽略
+            'appid' => C('APP_ID'), //填写高级调用功能的app id
+            'appsecret' => C('APP_SECRET'), //填写高级调用功能的密钥
+        );
+        $wechat_obj = new Wechat($options);
+
+        $token_res= M('accesstoken')->where(1)->order('id desc')->find();
+
+        if($token_res){
+
+          if($token_res['time'] < time() || $retrieve){
+
+            $token = $wechat_obj->setAccessToken();
+            //100分钟后
+            $time = time()+6000;
+            $update = $token_res['update'] + 1;
+            $data = array(
+              'token' => $token,
+              'time' => $time,
+              'update' => $update
+            );
+            M('accesstoken')->where('id ='.$token_res['id'])->save($data);
+          }else{
+            $token = $token_res['token'];
+          }
+
+        }else{
+
+          $token = $this->wechat_obj->setAccessToken();
+          $update = 0;
+          $time = time()+6000;
+          $data = array(
+            'token' => $token,
+            'time' => $time,
+            'update' => 0,
+          );
+          M('accesstoken')->add($data);
+        }
+        return $token;
+    }
 ?>

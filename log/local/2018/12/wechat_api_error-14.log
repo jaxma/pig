@@ -1,0 +1,18 @@
+
+10:57:02::wechat_return:Array
+(
+    [errcode] => 40001
+    [errmsg] => invalid credential, access_token is invalid or not latest hint: [zDKyiA03484696!]
+)
+
+11:00:18::wechat_return:Array
+(
+    [errcode] => 40001
+    [errmsg] => invalid credential, access_token is invalid or not latest hint: [OdoVkA05448888!]
+)
+
+11:24:44::wechat_return:Array
+(
+    [errcode] => 40001
+    [errmsg] => invalid credential, access_token is invalid or not latest hint: [Fe0hLa00101530!]
+)

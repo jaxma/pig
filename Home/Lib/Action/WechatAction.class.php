@@ -15,15 +15,26 @@ class WechatAction extends CommonAction {
         );
         $this->wechat_obj = new Wechat($options);
         // $postStr = file_get_contents("php://input");
-        $menu_access_token = $this->wechat_obj->checkAuth();
-        // p($menu_access_token);die;
+
+        $token = getToken();
+
+        $res = $this->wechat_obj->getSelfmenu($token);
+        $list = $this->wechat_obj->getMenu();
+        p($res);
+        p($list);
+        if($res == 'token_error'){
+          $token = getToken(1);
+          $res = $this->wechat_obj->getSelfmenu($token);
+        }
+
+
         $Event = $this->wechat_obj->getRev()->getRevEvent();
         if($Event['event'] == 'CLICK' && $Event['key'] == 'TEST_V2_1'){
             $this->wechat_obj->text('faker')->reply();
             exit;
         }else{
-          setlog($Event['event']);
-          setlog($Event['key']);
+          setlog('getRevEvent_return:'.$Event['event']);
+          setlog('getRevEvent_return:'.$Event['key']);
         }
 
         // $list = $this->wechat_obj->getMenu();
