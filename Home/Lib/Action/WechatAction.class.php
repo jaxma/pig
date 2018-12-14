@@ -54,7 +54,7 @@ class WechatAction extends CommonAction {
              'PicUrl'=>'http://www.yangsi.tk/Public/Admin/kindeditor/attached/image/20181103/20181103063738_69669.jpg',
             'Url'=>'http://www.yangsi.tk/'
          ),
-        )
+        );
 
         $Event = $this->wechat_obj->getRev()->getRevEvent();
         if($Event['event'] == 'CLICK' && $Event['key'] == 'TEST_V2_1'){
