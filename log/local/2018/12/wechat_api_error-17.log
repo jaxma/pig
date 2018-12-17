@@ -1,0 +1,48 @@
+
+11:43:02::wechat_return:Array
+(
+    [errcode] => 41005
+    [errmsg] => media data missing hint: [j00R03093723]
+)
+
+11:44:36::wechat_return:Array
+(
+    [errcode] => 41005
+    [errmsg] => media data missing hint: [ckIC0a04031491]
+)
+
+14:10:09::wechat_return:Array
+(
+    [errcode] => 44003
+    [errmsg] => empty news data hint: [b.HhKa01351538]
+)
+
+14:11:21::wechat_return:Array
+(
+    [errcode] => 44003
+    [errmsg] => empty news data hint: [3scj.a02081499]
+)
+
+14:12:03::wechat_return:Array
+(
+    [errcode] => 41005
+    [errmsg] => media data missing hint: [vU9yoA02503064]
+)
+
+14:14:10::wechat_return:Array
+(
+    [errcode] => 44003
+    [errmsg] => empty news data hint: [t6F0nA03773064]
+)
+
+14:14:30::wechat_return:Array
+(
+    [errcode] => 44003
+    [errmsg] => empty news data hint: [KhyiFA03973064]
+)
+
+14:15:03::wechat_return:Array
+(
+    [errcode] => 44003
+    [errmsg] => empty news data hint: [P0Xl604301499]
+)
