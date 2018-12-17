@@ -47,24 +47,32 @@ class WechatAction extends CommonAction {
         // $list = $this->wechat_obj->createMenu($button);
         // p($list);
 
-        // //上传图片
-        // $img_info = M('goods')->where('goods_id = 12')->find();
-        // $img_info = $img_info['goods_img'];
-        // $img_path = $_SERVER['DOCUMENT_ROOT'].__ROOT__.'/'.$img_info;
-        // $size = filesize($img_path);
-        // $file_info = array(
-        //   'filename' => $img_path,
-        //   'content-type' => 'image/jpg', //文件类型
-        //   'filelength' => $size
-        // );
-        // $upload_img_result = $this->wechat_obj->upload_meterial($file_info);
+        // die;
+
+        //上传图片
+        $img_info = M('goods')->where('goods_id = 12')->find();
+        $img_info = $img_info['goods_img'];
+        $img_path = $_SERVER['DOCUMENT_ROOT'].__ROOT__.'/'.$img_info;
+        $file_ext = pathinfo($img_path);
+        $file_ext = $file_ext['extension'];
+        $size = filesize($img_path);
+        $file_info = array(
+          'filename' => $img_path,
+          'content-type' => 'image/'.trim($file_ext), //文件类型
+          'filelength' => $size
+        );
+        $upload_img_result = $this->wechat_obj->upload_meterial($file_info);
+
+        p($upload_img_result);die;
+
+        $file_info = array(
+          'media' => '@{$img_path}',
+        );
+        $upload_img_result = $this->wechat_obj->uploadImg($file_info);
+        $url = $upload_img_result['url'];
 
         // $media_id = $upload_img_result['media_id'];
-
-        // //获取图片
-        // $images = $this->wechat_obj->getForeverList('image',0,20);
-        // // p($images);die;
-        // $media_id = $images['item'][0]['media_id'];
+        //7idfvHjR9O9A62yMDav65EEw59dqi8D9l8_7EvlGIUY
 
         // //上传素材
         // $upload_article_data = array(
@@ -72,8 +80,8 @@ class WechatAction extends CommonAction {
         //   'thumb_media_id' => $media_id,
         //   'author' => '测试作者',
         //   'digest' => '测试简介',
-        //   'show_cover_pic' => 1,
-        //   'content' => '测试内容',
+        //   'show_cover_pic' => 0,
+        //   'content' => '测试用的<img src="http://mmbiz.qpic.cn/mmbiz_jpg/CgW0qVibL6YxABfsI3BjPSV3MSTibXibOcPj9f2Xvib3Mt87NwvicTyNiabJib8Hb3uOmchoSoRyhmArBkSfwcJX56CNQ/0?wx_fmt=jpeg" alt="" />测试用的',
         //   'content_source_url' => 'www.yangsi.tk'
         // );
 
@@ -83,10 +91,10 @@ class WechatAction extends CommonAction {
         // );
         // $result= $this->wechat_obj->uploadForeverArticles($data);
 
+        // p($result);die;
         //7idfvHjR9O9A62yMDav65C2BZ_sMlqtfJ9HCfkUlL50
-
-        // //获取素材
-        // $result = $this->wechat_obj->getForeverMedia('7idfvHjR9O9A62yMDav65C2BZ_sMlqtfJ9HCfkUlL50');
+        //7idfvHjR9O9A62yMDav65FIxT8_i__q00E6hMCqlzg0
+        //7idfvHjR9O9A62yMDav65LPcTYI0nJHIhWeq3_yJ5E0
 
         $Event = $this->wechat_obj->getRev()->getRevEvent();
 
@@ -100,6 +108,7 @@ class WechatAction extends CommonAction {
             //  ),
             // );
 
+            //获取素材
             $result = $this->wechat_obj->getForeverMedia('7idfvHjR9O9A62yMDav65C2BZ_sMlqtfJ9HCfkUlL50');
             $data = $result['news_item'][0];
             $this->wechat_obj->news($data)->reply();

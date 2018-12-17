@@ -46,3 +46,27 @@
     [errcode] => 44003
     [errmsg] => empty news data hint: [P0Xl604301499]
 )
+
+14:50:56::wechat_return:Array
+(
+    [errcode] => 40007
+    [errmsg] => invalid media_id hint: [SQkkfa05833060]
+)
+
+16:00:10::wechat_return:Array
+(
+    [errcode] => 41005
+    [errmsg] => media data missing hint: [2z6nkA07373064]
+)
+
+16:00:37::wechat_return:Array
+(
+    [errcode] => 41005
+    [errmsg] => media data missing hint: [MQCNmA07641491]
+)
+
+16:00:57::wechat_return:Array
+(
+    [errcode] => 41005
+    [errmsg] => media data missing hint: [6bPUTA07843060]
+)
