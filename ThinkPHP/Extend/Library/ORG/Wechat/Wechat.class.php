@@ -1809,7 +1809,7 @@ class Wechat
 		 if(curl_errno()==0){
 		  $result=json_decode($result,true);
 		  //var_dump($result);
-		  return $result['media_id'];
+		  return $result;
 		 }else {
 		 echo curl_errno();
 		  return false;

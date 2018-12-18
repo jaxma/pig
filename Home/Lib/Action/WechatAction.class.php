@@ -49,27 +49,27 @@ class WechatAction extends CommonAction {
 
         // die;
 
-        //上传图片
-        $img_info = M('goods')->where('goods_id = 12')->find();
-        $img_info = $img_info['goods_img'];
-        $img_path = $_SERVER['DOCUMENT_ROOT'].__ROOT__.'/'.$img_info;
-        $file_ext = pathinfo($img_path);
-        $file_ext = $file_ext['extension'];
-        $size = filesize($img_path);
-        $file_info = array(
-          'filename' => $img_path,
-          'content-type' => 'image/'.trim($file_ext), //文件类型
-          'filelength' => $size
-        );
-        $upload_img_result = $this->wechat_obj->upload_meterial($file_info);
+        // //上传图片
+        // $img_info = M('goods')->where('goods_id = 12')->find();
+        // $img_info = $img_info['goods_img'];
+        // $img_path = $_SERVER['DOCUMENT_ROOT'].__ROOT__.'/'.$img_info;
+        // $file_ext = pathinfo($img_path);
+        // $file_ext = $file_ext['extension'];
+        // $size = filesize($img_path);
+        // $file_info = array(
+        //   'filename' => $img_path,
+        //   'content-type' => 'image/'.trim($file_ext), //文件类型
+        //   'filelength' => $size
+        // );
+        // $upload_img_result = $this->wechat_obj->upload_meterial($file_info);
 
-        p($upload_img_result);die;
+        // p($upload_img_result);die;
 
-        $file_info = array(
-          'media' => '@{$img_path}',
-        );
-        $upload_img_result = $this->wechat_obj->uploadImg($file_info);
-        $url = $upload_img_result['url'];
+        // $file_info = array(
+        //   'media' => '@{$img_path}',
+        // );
+        // $upload_img_result = $this->wechat_obj->uploadImg($file_info);
+        // $url = $upload_img_result['url'];
 
         // $media_id = $upload_img_result['media_id'];
         //7idfvHjR9O9A62yMDav65EEw59dqi8D9l8_7EvlGIUY
@@ -110,8 +110,16 @@ class WechatAction extends CommonAction {
 
             //获取素材
             $result = $this->wechat_obj->getForeverMedia('7idfvHjR9O9A62yMDav65C2BZ_sMlqtfJ9HCfkUlL50');
-            $data = $result['news_item'][0];
-            $this->wechat_obj->news($data)->reply();
+            $media_data = $result['news_item'][0];
+            $news_data = array(
+              "0"=>array(
+                 'Title'=>$media_data['title'],
+                 'Description'=>$media_data['digest'],
+                 'PicUrl'=>$media_data['thumb_url'],
+                  'Url'=>$media_data['url'],
+             ),
+            );
+            $this->wechat_obj->news($news_data)->reply();
             // $this->wechat_obj->text('faker')->reply();
             exit;
         }else{
