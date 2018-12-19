@@ -100,6 +100,7 @@ class WechatAction extends CommonAction {
         if($Event['event'] == 'CLICK'){
             $key = $Event['key'];
             $res = M('wechat_menu')->where('key = '.$key)->find();
+            $sql = M('wechat_menu')->_sql();
             $media_id = $res['media_id'];
             $content = $res['content'];
             if($media_id){
@@ -116,7 +117,7 @@ class WechatAction extends CommonAction {
                 );
                 $this->wechat_obj->news($news_data)->reply();
             }elseif((!$media_id || $media_id == null) && $content && $content != null){
-                $content = mb_strlen($info['content'], 'utf-8') > 500 ? mb_substr($info['content'], 0, 500, 'utf-8').'....' : $info['content'];
+                $content = mb_strlen($content, 'utf-8') > 500 ? mb_substr($content, 0, 500, 'utf-8').'....' : $content;
                 $content = strip_tags($content);
                 $this->wechat_obj->text($content)->reply();
             }elseif((!$media_id || $media_id == null) && (!$content || $content == null) && $thumb_media_id){
@@ -127,6 +128,11 @@ class WechatAction extends CommonAction {
                 $this->wechat_obj->text($media_id)->reply();
                 $this->wechat_obj->text("\n")->reply();
                 $this->wechat_obj->text($content)->reply();
+                $this->wechat_obj->text("\n")->reply();
+                $this->wechat_obj->text($res)->reply();
+                $this->wechat_obj->text("\n")->reply();
+                $this->wechat_obj->text($sql)->reply();
+                setlog('getRevEvent_return:'.$sql);
             }
             exit;
         }else{
