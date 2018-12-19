@@ -453,7 +453,13 @@ class MenuAction extends Action {
 
         $thumb_media_id = $this->uploadThumbImg($thumb_img);
 
-        if($thumb_media_id == 'error'){
+        if($thumb_media_id == 'max api'){
+            $res = array(
+                'code'=>2,
+                'msg'=>'微信今日调用接口次数用尽',
+            );
+            return $res;
+        }elseif($thumb_media_id == 'error'){
             $res = array(
                 'code'=>2,
                 'msg'=>'封面图上传失败',
@@ -534,6 +540,8 @@ class MenuAction extends Action {
         }
         if($thumb_media_id){
             return $thumb_media_id;
+        }elseif($upload_img_result == 'max api'){
+            return 'max api';
         }else{
             return 'error';
         }

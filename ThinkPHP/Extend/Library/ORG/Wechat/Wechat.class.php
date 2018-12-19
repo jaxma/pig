@@ -1814,15 +1814,21 @@ class Wechat
 		 $result = curl_exec( $ch1 );
 		 // echo '<br/>';
 		 // echo 'reulst is ==========>'.$result;
-         setLog('upload_meterial:res：'.$result.'error_num:'.curl_errno(),'wechat_api_error');
-		 curl_close( $ch1 );
-		 if(curl_errno()==0){
-		  $result=json_decode($result,true);
-		  //var_dump($result);
-		  return $result;
-		 }else {
-		  return false;
-		 }
+		if($result){
+	        $json = json_decode($result,true);
+	        if (!$json || !empty($json['errcode'])) {
+	            $this->errCode = $json['errcode'];
+	            $this->errMsg = $json['errmsg'];
+	            $str_err = strstr($this->errMsg,"reach max api daily quota limit hint");
+	            if($str_err){
+	       			return 'max api';
+	            }
+	            setLog('uploadForeverArticles:'.print_r($json,1),'wechat_api_error');
+	            return false;
+	        }
+	        return $json;
+		}
+        return false;
 	}
     /**
      * 上传永久图文素材(认证后的订阅号可用)
