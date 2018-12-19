@@ -52,3 +52,9 @@
     [errcode] => 41002
     [errmsg] => appid missing hint: [o3O_Pa01483064]
 )
+
+15:15:17::wechat_return:Array
+(
+    [errcode] => -1
+    [errmsg] => system error hint: [coGAha08451538]
+)

@@ -11,13 +11,10 @@
 
   <body>
     <script type="text/javascript">
-      require(['ZeroClipboard','ueditor.config', 'ueditor.all', 'zh-cn'], function(ZeroClipboard) {
-        window['ZeroClipboard'] = ZeroClipboard;
         $('.ueditors').each(function(key,value){
           UE.delEditor($(value).attr("id"));
           var ue = UE.getEditor($(value).attr("id"),{initialFrameWidth:'100%',initialFrameHeight:350});
         })
-      })
     </script>
   </body>
 

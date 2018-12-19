@@ -9,6 +9,8 @@
     <link href="__PUBLIC__/Admin/layui/css/layui.css" rel="stylesheet" />
     <script src="__PUBLIC__/Admin/layui/layui.js"></script>
     <link href="__PUBLIC__/Admin/Css/wechat_menu.css" rel="stylesheet" />
+    <script src="__PUBLIC__/Admin/ueditor/ueditor.config.js"></script>
+    <script src="__PUBLIC__/Admin/ueditor/ueditor.all.js"></script>
 
     <title></title>
     <style>
@@ -33,17 +35,6 @@
 </head>
 
 <body>
-<script src="__PUBLIC__/Admin/kindeditor/kindeditor.js"></script>
-<script type="text/javascript">
-KindEditor.ready(function(K) {
-    K.create('#content', {
-        allowFileManager : false,
-        pasteType : 2,
-        newlineTag : 'p',
-        urlType : 'absolute'
-    });
-});
-</script>
     <div class="container-fluid edit-wrapper layui-container">
         <header>
             <blockquote class="layui-elem-quote">
@@ -145,7 +136,7 @@ KindEditor.ready(function(K) {
                             </div>
                             <div class="panel panel-default">
                                 <div class="panel-body">
-<!--                                     <textarea id="editor" class="ueditors" name="content"></textarea>
+                                    <textarea id="editor" class="ueditors" name="content"></textarea>
                                     <!DOCTYPE html>
 <html>
 
@@ -159,19 +150,15 @@ KindEditor.ready(function(K) {
 
   <body>
     <script type="text/javascript">
-      require(['ZeroClipboard','ueditor.config', 'ueditor.all', 'zh-cn'], function(ZeroClipboard) {
-        window['ZeroClipboard'] = ZeroClipboard;
         $('.ueditors').each(function(key,value){
           UE.delEditor($(value).attr("id"));
           var ue = UE.getEditor($(value).attr("id"),{initialFrameWidth:'100%',initialFrameHeight:350});
         })
-      })
     </script>
   </body>
 
 
-</html> -->
-                                    <textarea style="width:100%;height:400px;" name="content" id="content" ></textarea>
+</html>
                                     <i class="fa fa-question-circle-o question" data-tips-text="如果只填写编辑框，将默认直接推送编辑框内的文字内容"></i>
                                 </div>
                             </div>
@@ -204,7 +191,6 @@ KindEditor.ready(function(K) {
     <span id='daily_content' style="display: none;"></span>  
     <script src="__PUBLIC__/Admin/Js/wechat_menu.js"></script>
     <script>
-
     //清空
     function clear_con(alert){
         if(alert == 'alert'){
@@ -215,8 +201,7 @@ KindEditor.ready(function(K) {
         //默认点击页面
         $('.menu-content').show();
         $('.layui-form-radio').eq(0).click();
-        // UE.getEditor('editor').setContent('');
-        $('#content').text('');
+        UE.getEditor('editor').setContent('');
         $("input[name='name']").val('');
         $("input[name='url']").val('');
         $(".layui-upload-list").css('display','none');
@@ -287,8 +272,7 @@ KindEditor.ready(function(K) {
         var m_name = $("input[name='name']").val();
         var m_type = $("input[name='new_type']").val();
         var m_url = $("input[name='url']").val();
-        // var m_content = UE.getEditor('editor').getContent();
-        var m_content =  $("#content").text();
+        var m_content = UE.getEditor('editor').getContent();
         var m_key = $("input[name='key']").val();
         var m_pid = $("input[name='pid']").val();
         var m_image = $("input[name='image']").val();
@@ -401,8 +385,7 @@ KindEditor.ready(function(K) {
                     $('.layui-form-radio').eq(1).click();
                 }
                 if(new_type == "click") {
-                    // UE.getEditor('editor').setContent(data.con);
-                    $("#content").text(data.con);
+                    UE.getEditor('editor').setContent(data.con);
                     $("input[name='name']").val(data.list.name);
                     if(data.list.image)$(".layui-upload-list").css('display','block');
                     $(".layui-upload-img").attr('src','__ROOT__'+data.list.image);
