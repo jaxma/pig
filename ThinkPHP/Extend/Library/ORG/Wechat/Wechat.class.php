@@ -1114,7 +1114,7 @@ class Wechat
 	 * @param boolean $post_file 是否文件上传
 	 * @return string content
 	 */
-	private function http_post($url,$param,$post_file = false){
+	private function http_post($url,$param,$post_file = false,$img_path = ''){
 		$oCurl = curl_init();
 		if(stripos($url,"https://")!==FALSE){
 			curl_setopt($oCurl, CURLOPT_SSL_VERIFYPEER, FALSE);
@@ -1130,6 +1130,14 @@ class Wechat
 			}
 			$strPOST =  join("&", $aPOST);
 		}
+        if (class_exists('\CURLFile')) {
+			$strPOST['media'] = new \CURLFile(realpath($img_path));
+		} else {
+		     if (defined('CURLOPT_SAFE_UPLOAD')) {
+		     		//5.6是没有的，设置了也无法强制用旧语法，5.5是可以的
+		         curl_setopt($oCurl,CURLOPT_SAFE_UPLOAD,FALSE);
+		     }
+		}
 		curl_setopt($oCurl, CURLOPT_URL, $url);
 		curl_setopt($oCurl, CURLOPT_RETURNTRANSFER, 1 );
 		curl_setopt($oCurl, CURLOPT_POST,true);
@@ -1142,7 +1150,7 @@ class Wechat
 		}else{
 			return false;
 		}
-	}
+	}    
 
 	/**
 	 * 设置缓存，按需重载
@@ -1730,14 +1738,14 @@ class Wechat
 	 * 上传图片，本接口所上传的图片不占用公众号的素材库中图片数量的5000个的限制。图片仅支持jpg/png格式，大小必须在1MB以下。 (认证后的订阅号可用)
 	 * 注意：上传大文件时可能需要先调用 set_time_limit(0) 避免超时
 	 * 注意：数组的键值任意，但文件名前必须加@，使用单引号以避免本地路径斜杠被转义
-	 * @param array $data {"media":'@Path\filename.jpg'}
+	 * @param array $data {"media":'@Path\filename.jpg'} php5.6及以上版本不支持这种方式
 	 *
 	 * @return boolean|array
 	 */
-	public function uploadImg($data){
+	public function uploadImg($data,$img_path = ''){
 		if (!$this->access_token && !$this->checkAuth()) return false;
 		//原先的上传多媒体文件接口使用 self::UPLOAD_MEDIA_URL 前缀
-		$result = $this->http_post(self::API_URL_PREFIX.self::MEDIA_UPLOADIMG_URL.'access_token='.$this->access_token,$data,true);
+		$result = $this->http_post(self::API_URL_PREFIX.self::MEDIA_UPLOADIMG_URL.'access_token='.$this->access_token,$data,true,$img_path);
 		if ($result)
 		{
 			$json = json_decode($result,true);

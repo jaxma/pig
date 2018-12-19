@@ -432,23 +432,18 @@ class MenuAction extends Action {
         foreach ($matches[2] as $k => $v) {
         	//已经替换过的图片不能再替换一次，否则就被微信吞了
         	$have_replace = strstr($v,'mmbiz.qpic.cn');
-        	if(!$have_replace){
-	            $img_path = $_SERVER['DOCUMENT_ROOT'].__ROOT__.$v;
-	            $file_info = array(
-	              'media' => "@{$img_path}",
-	            );
-	            $upload_img_result = $this->wechat_obj->uploadImg($file_info);
-	            if(!$upload_img_result){
-                    //可能是引号的问题
-                    $file_info2 = array(
-                      "media" => '@{$img_path}',
-                    );
-                    $upload_img_result = $this->wechat_obj->uploadImg($file_info2);
+            if(!$have_replace){
+                $img_path = $_SERVER['DOCUMENT_ROOT'].__ROOT__.$v;
+                $file_info = array(
+                  'media' => "@{$img_path}",
+                );
+                $upload_img_result = $this->wechat_obj->uploadImg($file_info,$img_path);
+                if(!$upload_img_result){
+                    $upload_img_result['url'] = '??';//可以填写默认图片
                     setlog('uploadImg:'.$img_path);
                 }
-                if(!$upload_img_result)$upload_img_result['url'] = '??';//可以填写默认图片
-	            $v = $upload_img_result['url'];
-        	}
+                $v = $upload_img_result['url'];
+            }
             $u[] = $v;
         }
 
