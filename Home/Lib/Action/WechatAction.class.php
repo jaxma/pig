@@ -123,6 +123,10 @@ class WechatAction extends CommonAction {
                 $this->wechat_obj->image($thumb_media_id)->reply();
             }else{
                 $this->wechat_obj->text($key)->reply();
+                $this->wechat_obj->text("\n")->reply();
+                $this->wechat_obj->text($media_id)->reply();
+                $this->wechat_obj->text("\n")->reply();
+                $this->wechat_obj->text($content)->reply();
             }
             exit;
         }else{
