@@ -102,13 +102,7 @@ class WechatAction extends CommonAction {
             $res = M('wechat_menu')->where('key = '.$key)->find();
             $media_id = $res['media_id'];
             $content = $res['content'];
-            if(!$media_id && $content){
-                $content = mb_strlen($info['content'], 'utf-8') > 500 ? mb_substr($info['content'], 0, 500, 'utf-8').'....' : $news['n_content'];
-                $content = strip_tags($content);
-                $this->wechat_obj->text($content)->reply();
-            }elseif(!$media_id && !$content && $thumb_media_id){
-                $this->wechat_obj->image($thumb_media_id)->reply();
-            }else{
+            if($media_id){
                 //获取素材
                 $result = $this->wechat_obj->getForeverMedia($media_id);
                 $media_data = $result['news_item'][0];
@@ -121,6 +115,14 @@ class WechatAction extends CommonAction {
                  ),
                 );
                 $this->wechat_obj->news($news_data)->reply();
+            }elseif(!$media_id && $content){
+                $content = mb_strlen($info['content'], 'utf-8') > 500 ? mb_substr($info['content'], 0, 500, 'utf-8').'....' : $info['content'];
+                $content = strip_tags($content);
+                $this->wechat_obj->text($content)->reply();
+            }elseif(!$media_id && !$content && $thumb_media_id){
+                $this->wechat_obj->image($thumb_media_id)->reply();
+            }else{
+                $this->wechat_obj->text('null')->reply();
             }
             exit;
         }else{
@@ -129,7 +131,7 @@ class WechatAction extends CommonAction {
         }
 
 
-        if($Event['event'] == 'CLICK' && $Event['key'] == 'TEST_V2_1'){
+        // if($Event['event'] == 'CLICK' && $Event['key'] == 'TEST_V2_1'){
             // $data = array(
             //   "0"=>array(
             //      'Title'=>'曾经的大猪',
@@ -157,12 +159,12 @@ class WechatAction extends CommonAction {
             // $content = mb_strlen($info['content'], 'utf-8') > 500 ? mb_substr($info['content'], 0, 500, 'utf-8').'....' : $news['n_content'];
             // $content = strip_tags($content);
             // $this->wechat_obj->text($content)->reply();
+
             
-            
-        }else{
+        // }else{
           // setlog('getRevEvent_return:'.$Event['event']);
           // setlog('getRevEvent_return:'.$Event['key']);
-        }
+        // }
 
         // $list = $this->wechat_obj->getMenu();
           // $button = array (
