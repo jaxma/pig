@@ -60,11 +60,11 @@
                                 </li>
                                 <foreach name="list" item="i">
                                     <li>
-                                        <span class="menu-title2" data-type="{$i.type}" data-id="{$i.id}" <if condition="$i.type eq 'click' ">data-key="{$i.mkey}"<elseif  condition="$i.type eq 'view'" />data-url="{$i.url}"</if> ><empty name="$i.name">{$i.name}<else/>名称为空</empty></span>
+                                        <span class="menu-title2" data-type="{$i.type}" data-id="{$i.id}" <if condition="$i.type eq 'click' ">data-key="{$i.key}"<elseif  condition="$i.type eq 'view'" />data-url="{$i.url}"</if> ><empty name="$i.name">{$i.name}<else/>名称为空</empty></span>
                                         <ul class="menu-list">
                                             <li class="add-item">+</li>
                                             <foreach name="i.sub_button.list" item="ii">
-                                                <li class="child-menu" data-type="{$ii.type}" data-id="{$ii.id}" <if condition="$ii.type eq 'click' ">data-key="{$ii.mkey}"<elseif  condition="$ii.type eq 'view'" />data-url="{$ii.url}"</if>>
+                                                <li class="child-menu" data-type="{$ii.type}" data-id="{$ii.id}" <if condition="$ii.type eq 'click' ">data-key="{$ii.key}"<elseif  condition="$ii.type eq 'view'" />data-url="{$ii.url}"</if>>
                                                     <span><empty name="$ii.name">{$ii.name}<else/>名称为空</empty></span>
                                                 </li>
                                             </foreach>
