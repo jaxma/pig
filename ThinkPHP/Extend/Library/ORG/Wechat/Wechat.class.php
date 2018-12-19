@@ -1327,7 +1327,7 @@ class Wechat
 			if (!$json || isset($json['errcode'])) {
 				$this->errCode = $json['errcode'];
 				$this->errMsg = $json['errmsg'];
-                                setLog('wechat_return:'.print_r($json,1),'wechat_api_error');
+                                setLog('checkAuth:'.print_r($json,1),'wechat_api_error');
 				return false;
 			}
 			$this->access_token = $json['access_token'];
@@ -1355,7 +1355,7 @@ class Wechat
 					return 'token_error';
 					exit;
 				}
-                setLog('wechat_return:'.print_r($json,1),'wechat_api_error');
+                setLog('getSelfmenu:'.print_r($json,1),'wechat_api_error');
 				return false;
 			}
 			return $json;
@@ -1623,7 +1623,7 @@ class Wechat
 			if (!$json || !empty($json['errcode'])) {
 				$this->errCode = $json['errcode'];
 				$this->errMsg = $json['errmsg'];
-                setLog('wechat_return:'.print_r($json,1),'wechat_api_error');
+                setLog('createMenu:'.print_r($json,1),'wechat_api_error');
 				return false;
 			}
 			return true;
@@ -1688,7 +1688,7 @@ class Wechat
 			if (!$json || !empty($json['errcode'])) {
 				$this->errCode = $json['errcode'];
 				$this->errMsg = $json['errmsg'];
-                setLog('wechat_return:'.print_r($json,1),'wechat_api_error');
+                setLog('uploadMedia:'.print_r($json,1),'wechat_api_error');
 				return false;
 			}
 			return $json;
@@ -1710,7 +1710,7 @@ class Wechat
 			if (isset($json['errcode'])) {
 				$this->errCode = $json['errcode'];
 				$this->errMsg = $json['errmsg'];
-                setLog('wechat_return:'.print_r($json,1),'wechat_api_error');
+                setLog('getMedia:'.print_r($json,1),'wechat_api_error');
 				return false;
 			}
 	        $a = file_get_contents(self::UPLOAD_MEDIA_URL.self::MEDIA_GET_URL.'access_token='.$this->access_token.'&media_id='.$media_id);
@@ -1744,7 +1744,7 @@ class Wechat
 			if (!$json || !empty($json['errcode'])) {
 				$this->errCode = $json['errcode'];
 				$this->errMsg = $json['errmsg'];
-                setLog('wechat_return:'.print_r($json,1),'wechat_api_error');
+                setLog('uploadImg:'.print_r($json,1),'wechat_api_error');
 				return false;
 			}
 			return $json;
@@ -1778,7 +1778,7 @@ class Wechat
             if (!$json || !empty($json['errcode'])) {
                 $this->errCode = $json['errcode'];
                 $this->errMsg = $json['errmsg'];
-                setLog('wechat_return:'.print_r($json,1),'wechat_api_error');
+                setLog('uploadForeverMedia:'.print_r($json,1),'wechat_api_error');
                 return false;
             }
             return $json;
@@ -1835,7 +1835,7 @@ class Wechat
                 if($str_err){
            			return 'max api';
                 }
-                setLog('wechat_return:'.print_r($json,1),'wechat_api_error');
+                setLog('uploadForeverArticles:'.print_r($json,1),'wechat_api_error');
                 return false;
             }
             return $json;
@@ -1862,7 +1862,7 @@ class Wechat
             if (!$json || !empty($json['errcode'])) {
                 $this->errCode = $json['errcode'];
                 $this->errMsg = $json['errmsg'];
-                setLog('wechat_return:'.print_r($json,1),'wechat_api_error');
+                setLog('updateForeverArticles:'.print_r($json,1),'wechat_api_error');
                 return false;
             }
             return $json;

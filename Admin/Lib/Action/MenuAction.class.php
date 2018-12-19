@@ -409,7 +409,6 @@ class MenuAction extends Action {
                 'code'=>2,
                 'msg'=>'保存失败'
             );
-            setlog('save_error:'.var_dump($arr,1));
         }
         $this->ajaxReturn($data);
     }
@@ -445,7 +444,7 @@ class MenuAction extends Action {
                       "media" => '@{$img_path}',
                     );
                     $upload_img_result = $this->wechat_obj->uploadImg($file_info2);
-                    setlog('uploadImg:'.var_dump($file_info.$file_info2,1));
+                    setlog('uploadImg:'.$file_info);
                 }
                 if(!$upload_img_result)$upload_img_result['url'] = '??';//可以填写默认图片
 	            $v = $upload_img_result['url'];
