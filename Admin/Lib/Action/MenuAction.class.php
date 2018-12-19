@@ -409,6 +409,7 @@ class MenuAction extends Action {
                 'code'=>2,
                 'msg'=>'保存失败'
             );
+            setlog('save_error:'.$arr);
         }
         $this->ajaxReturn($data);
     }
