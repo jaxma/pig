@@ -1820,7 +1820,7 @@ class Wechat
 		  //var_dump($result);
 		  return $result;
 		 }else {
-		 echo curl_errno();
+          setLog('uploadForeverArticles:res：'.$result.'error_num:'.curl_errno(),'wechat_api_error');
 		  return false;
 		 }
 	}
