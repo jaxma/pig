@@ -1,0 +1,142 @@
+[ 2018-12-19T14:36:12+08:00 ] 127.0.0.1 /system.php/Menu/save_menu/
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.002000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: Run CheckLang Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004000s ]
+NOTIC: [8] Undefined index: code D:\www\pig\Admin\Lib\Action\MenuAction.class.php 第 230 行.
+SQL: SHOW COLUMNS FROM `tp_wechat_menu` [ RunTime:0.009001s ]
+SQL: UPDATE `tp_wechat_menu` SET `type`='',`key`='',`url`='',`image`='',`author`='',`digest`='',`content_source_url`='',`content`='',`thumb_media_id`='',`media_id`='' WHERE ( id=873 ) [ RunTime:0.052003s ]
+NOTIC: [8] Undefined index: thumb_media_id D:\www\pig\Admin\Lib\Action\MenuAction.class.php 第 279 行.
+NOTIC: [8] Undefined index: media_id D:\www\pig\Admin\Lib\Action\MenuAction.class.php 第 280 行.
+SQL: INSERT INTO `tp_wechat_menu` (`name`,`type`,`key`,`pid`,`url`,`image`,`author`,`digest`,`content_source_url`,`content`,`thumb_media_id`,`media_id`) VALUES ('测试3','click','MENU_20181219_84519',873,'','/Uploads/menu/20181219/5c19e6a7e0aab.jpeg','yangcy','测试用的','www.yangsi.tk','',null,null) [ RunTime:0.067004s ]
+SQL: SELECT * FROM `tp_wechat_menu` WHERE ( id=876 ) LIMIT 1   [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant ture - assumed 'ture' D:\www\pig\Admin\Lib\Action\MenuAction.class.php 第 309 行.
+NOTIC: [8] Use of undefined constant ture - assumed 'ture' D:\www\pig\Admin\Lib\Action\MenuAction.class.php 第 314 行.
+SQL: SELECT * FROM `tp_wechat_menu` WHERE ( id=872 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `tp_wechat_menu` WHERE ( id=873 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `tp_wechat_menu` WHERE ( id=874 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT * FROM `tp_wechat_menu` WHERE ( id=875 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `tp_wechat_menu` WHERE ( id=876 ) LIMIT 1   [ RunTime:0.001000s ]
+NOTIC: [2] file_get_contents(access_token.json): failed to open stream: No such file or directory D:\www\pig\ThinkPHP\Extend\Library\ORG\Wechat\Wechat.class.php 第 1221 行.
+NOTIC: [8] Trying to get property of non-object D:\www\pig\ThinkPHP\Extend\Library\ORG\Wechat\Wechat.class.php 第 1222 行.
+NOTIC: [2] Missing argument 1 for Wechat::setCache(), called in D:\www\pig\ThinkPHP\Extend\Library\ORG\Wechat\Wechat.class.php on line 1223 and defined D:\www\pig\ThinkPHP\Extend\Library\ORG\Wechat\Wechat.class.php 第 1154 行.
+NOTIC: [2] Missing argument 2 for Wechat::setCache(), called in D:\www\pig\ThinkPHP\Extend\Library\ORG\Wechat\Wechat.class.php on line 1223 and defined D:\www\pig\ThinkPHP\Extend\Library\ORG\Wechat\Wechat.class.php 第 1154 行.
+NOTIC: [2] Missing argument 3 for Wechat::setCache(), called in D:\www\pig\ThinkPHP\Extend\Library\ORG\Wechat\Wechat.class.php on line 1223 and defined D:\www\pig\ThinkPHP\Extend\Library\ORG\Wechat\Wechat.class.php 第 1154 行.
+NOTIC: [8] Undefined variable: cachename D:\www\pig\ThinkPHP\Extend\Library\ORG\Wechat\Wechat.class.php 第 1156 行.
+NOTIC: [8] Undefined variable: value D:\www\pig\ThinkPHP\Extend\Library\ORG\Wechat\Wechat.class.php 第 1156 行.
+NOTIC: [8] Undefined variable: expired D:\www\pig\ThinkPHP\Extend\Library\ORG\Wechat\Wechat.class.php 第 1156 行.
+NOTIC: [2] file_get_contents(access_token.json): failed to open stream: No such file or directory D:\www\pig\ThinkPHP\Extend\Library\ORG\Wechat\Wechat.class.php 第 1198 行.
+NOTIC: [8] Undefined property: Wechat::$appId D:\www\pig\ThinkPHP\Extend\Library\ORG\Wechat\Wechat.class.php 第 1199 行.
+NOTIC: [8] Undefined property: Wechat::$appSecret D:\www\pig\ThinkPHP\Extend\Library\ORG\Wechat\Wechat.class.php 第 1199 行.
+NOTIC: [8] Undefined property: stdClass::$access_token D:\www\pig\ThinkPHP\Extend\Library\ORG\Wechat\Wechat.class.php 第 1201 行.
+NOTIC: [2] file_get_contents(access_token.json): failed to open stream: No such file or directory D:\www\pig\ThinkPHP\Extend\Library\ORG\Wechat\Wechat.class.php 第 1198 行.
+NOTIC: [8] Undefined property: Wechat::$appId D:\www\pig\ThinkPHP\Extend\Library\ORG\Wechat\Wechat.class.php 第 1199 行.
+NOTIC: [8] Undefined property: Wechat::$appSecret D:\www\pig\ThinkPHP\Extend\Library\ORG\Wechat\Wechat.class.php 第 1199 行.
+NOTIC: [8] Undefined property: stdClass::$access_token D:\www\pig\ThinkPHP\Extend\Library\ORG\Wechat\Wechat.class.php 第 1201 行.
+SQL: DELETE FROM `tp_wechat_menu` WHERE ( id not in (872,873,874,875,876) ) [ RunTime:0.198011s ]
+
+[ 2018-12-19T14:36:16+08:00 ] 127.0.0.1 /system.php/Menu
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.001000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002000s ]
+INFO: Run CheckLang Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004000s ]
+NOTIC: [2] file_get_contents(access_token.json): failed to open stream: No such file or directory D:\www\pig\ThinkPHP\Extend\Library\ORG\Wechat\Wechat.class.php 第 1221 行.
+NOTIC: [8] Trying to get property of non-object D:\www\pig\ThinkPHP\Extend\Library\ORG\Wechat\Wechat.class.php 第 1222 行.
+NOTIC: [2] Missing argument 1 for Wechat::setCache(), called in D:\www\pig\ThinkPHP\Extend\Library\ORG\Wechat\Wechat.class.php on line 1223 and defined D:\www\pig\ThinkPHP\Extend\Library\ORG\Wechat\Wechat.class.php 第 1154 行.
+NOTIC: [2] Missing argument 2 for Wechat::setCache(), called in D:\www\pig\ThinkPHP\Extend\Library\ORG\Wechat\Wechat.class.php on line 1223 and defined D:\www\pig\ThinkPHP\Extend\Library\ORG\Wechat\Wechat.class.php 第 1154 行.
+NOTIC: [2] Missing argument 3 for Wechat::setCache(), called in D:\www\pig\ThinkPHP\Extend\Library\ORG\Wechat\Wechat.class.php on line 1223 and defined D:\www\pig\ThinkPHP\Extend\Library\ORG\Wechat\Wechat.class.php 第 1154 行.
+NOTIC: [8] Undefined variable: cachename D:\www\pig\ThinkPHP\Extend\Library\ORG\Wechat\Wechat.class.php 第 1156 行.
+NOTIC: [8] Undefined variable: value D:\www\pig\ThinkPHP\Extend\Library\ORG\Wechat\Wechat.class.php 第 1156 行.
+NOTIC: [8] Undefined variable: expired D:\www\pig\ThinkPHP\Extend\Library\ORG\Wechat\Wechat.class.php 第 1156 行.
+NOTIC: [2] file_get_contents(access_token.json): failed to open stream: No such file or directory D:\www\pig\ThinkPHP\Extend\Library\ORG\Wechat\Wechat.class.php 第 1198 行.
+NOTIC: [8] Undefined property: Wechat::$appId D:\www\pig\ThinkPHP\Extend\Library\ORG\Wechat\Wechat.class.php 第 1199 行.
+NOTIC: [8] Undefined property: Wechat::$appSecret D:\www\pig\ThinkPHP\Extend\Library\ORG\Wechat\Wechat.class.php 第 1199 行.
+NOTIC: [8] Undefined property: stdClass::$access_token D:\www\pig\ThinkPHP\Extend\Library\ORG\Wechat\Wechat.class.php 第 1201 行.
+NOTIC: [2] file_get_contents(access_token.json): failed to open stream: No such file or directory D:\www\pig\ThinkPHP\Extend\Library\ORG\Wechat\Wechat.class.php 第 1198 行.
+NOTIC: [8] Undefined property: Wechat::$appId D:\www\pig\ThinkPHP\Extend\Library\ORG\Wechat\Wechat.class.php 第 1199 行.
+NOTIC: [8] Undefined property: Wechat::$appSecret D:\www\pig\ThinkPHP\Extend\Library\ORG\Wechat\Wechat.class.php 第 1199 行.
+NOTIC: [8] Undefined property: stdClass::$access_token D:\www\pig\ThinkPHP\Extend\Library\ORG\Wechat\Wechat.class.php 第 1201 行.
+SQL: SHOW COLUMNS FROM `tp_wechat_menu` [ RunTime:0.015000s ]
+SQL: SELECT * FROM `tp_wechat_menu` WHERE ( `type` = 'click' ) AND ( `name` = '测试1' ) AND ( `key` = 'TEST_V1_1' ) AND ( `pid` = 0 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: UPDATE `tp_wechat_menu` SET `type`='click',`name`='测试1',`key`='TEST_V1_1',`pid`=0 WHERE ( id=872 ) [ RunTime:0.041002s ]
+NOTIC: [8] Undefined index: type D:\www\pig\Admin\Lib\Action\MenuAction.class.php 第 52 行.
+SQL: SELECT * FROM `tp_wechat_menu` WHERE ( name = "测试2" and type = ""  ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT * FROM `tp_wechat_menu` WHERE ( `type` = 'click' ) AND ( `name` = '测试2' ) AND ( `key` = 'TEST_V2_1' ) AND ( `pid` = 873 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: UPDATE `tp_wechat_menu` SET `type`='click',`name`='测试2',`key`='TEST_V2_1',`pid`=873 WHERE ( id=874 ) [ RunTime:0.024001s ]
+SQL: SELECT * FROM `tp_wechat_menu` WHERE ( `type` = 'view' ) AND ( `name` = '测试3' ) AND ( `url` = 'http://baidu.com' ) AND ( `pid` = 873 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: UPDATE `tp_wechat_menu` SET `type`='view',`name`='测试3',`url`='http://baidu.com',`pid`=873 WHERE ( id=875 ) [ RunTime:0.030001s ]
+SQL: SELECT * FROM `tp_wechat_menu` WHERE ( `type` = 'click' ) AND ( `name` = '测试3' ) AND ( `key` = 'MENU_20181219_84519' ) AND ( `pid` = 873 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: UPDATE `tp_wechat_menu` SET `type`='click',`name`='测试3',`key`='MENU_20181219_84519',`pid`=873 WHERE ( id=876 ) [ RunTime:0.026002s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.004000s ]
+INFO: [ view_template ] --END-- [ RunTime:0.004000s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Use of undefined constant GROUP_NAME - assumed 'GROUP_NAME' D:\www\pig\Cache\Runtime\Admin\Cache\524bf9dfbbe542dd5db38d91d6205c7b.php 第 21 行.
+NOTIC: [8] Use of undefined constant GROUP_NAME - assumed 'GROUP_NAME' D:\www\pig\Cache\Runtime\Admin\Cache\524bf9dfbbe542dd5db38d91d6205c7b.php 第 22 行.
+NOTIC: [8] Use of undefined constant GROUP_NAME - assumed 'GROUP_NAME' D:\www\pig\Cache\Runtime\Admin\Cache\524bf9dfbbe542dd5db38d91d6205c7b.php 第 23 行.
+NOTIC: [8] Undefined index: sub_button D:\www\pig\Cache\Runtime\Admin\Cache\524bf9dfbbe542dd5db38d91d6205c7b.php 第 74 行.
+NOTIC: [8] Undefined index: type D:\www\pig\Cache\Runtime\Admin\Cache\524bf9dfbbe542dd5db38d91d6205c7b.php 第 71 行.
+NOTIC: [8] Undefined index: type D:\www\pig\Cache\Runtime\Admin\Cache\524bf9dfbbe542dd5db38d91d6205c7b.php 第 71 行.
+NOTIC: [8] Undefined index: type D:\www\pig\Cache\Runtime\Admin\Cache\524bf9dfbbe542dd5db38d91d6205c7b.php 第 71 行.
+INFO: Run ParseTemplate Behavior [ RunTime:0.027002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.027002s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.001000s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.001000s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.001000s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.005000s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.002000s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2018-12-19T14:36:20+08:00 ] 127.0.0.1 /system.php/Menu/get_menu_content/
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.002000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001000s ]
+INFO: Run CheckLang Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `tp_wechat_menu` [ RunTime:0.021001s ]
+SQL: SELECT * FROM `tp_wechat_menu` WHERE ( id=873 ) LIMIT 1   [ RunTime:0.002000s ]
+
+[ 2018-12-19T14:36:22+08:00 ] 127.0.0.1 /system.php/Menu/get_menu_content/
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.001000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001000s ]
+INFO: Run CheckLang Behavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `tp_wechat_menu` [ RunTime:0.017001s ]
+SQL: SELECT * FROM `tp_wechat_menu` WHERE ( id=876 ) LIMIT 1   [ RunTime:0.001000s ]
+
+[ 2018-12-19T14:36:25+08:00 ] 127.0.0.1 /system.php/Menu/get_menu_content/
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.001000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001000s ]
+INFO: Run CheckLang Behavior [ RunTime:0.002001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003001s ]
+SQL: SHOW COLUMNS FROM `tp_wechat_menu` [ RunTime:0.018001s ]
+SQL: SELECT * FROM `tp_wechat_menu` WHERE ( id=875 ) LIMIT 1   [ RunTime:0.001000s ]
+
+[ 2018-12-19T14:36:27+08:00 ] 127.0.0.1 /system.php/Menu/get_menu_content/
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.002000s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001000s ]
+INFO: Run CheckLang Behavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `tp_wechat_menu` [ RunTime:0.009001s ]
+SQL: SELECT * FROM `tp_wechat_menu` WHERE ( id=876 ) LIMIT 1   [ RunTime:0.000000s ]
+

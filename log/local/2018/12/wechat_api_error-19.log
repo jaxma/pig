@@ -1,0 +1,54 @@
+
+11:47:57::wechat_return:Array
+(
+    [errcode] => 41002
+    [errmsg] => appid missing hint: [rwklpa0405hb97]
+)
+
+11:49:33::wechat_return:Array
+(
+    [errcode] => 41002
+    [errmsg] => appid missing hint: [.g.kLA05012790]
+)
+
+11:51:04::wechat_return:Array
+(
+    [errcode] => 41002
+    [errmsg] => appid missing hint: [05911512]
+)
+
+11:51:25::wechat_return:Array
+(
+    [errcode] => 41002
+    [errmsg] => appid missing hint: [iTa7rA06131480]
+)
+
+11:51:36::wechat_return:Array
+(
+    [errcode] => 41002
+    [errmsg] => appid missing hint: [k6XL0624b101]
+)
+
+14:22:13::wechat_return:Array
+(
+    [errcode] => 41002
+    [errmsg] => appid missing hint: [vYCGvA0661hb92]
+)
+
+14:29:06::wechat_return:Array
+(
+    [errcode] => 41002
+    [errmsg] => appid missing hint: [qGGhsa00743064]
+)
+
+14:29:20::wechat_return:Array
+(
+    [errcode] => 41002
+    [errmsg] => appid missing hint: [lz00881480]
+)
+
+14:30:20::wechat_return:Array
+(
+    [errcode] => 41002
+    [errmsg] => appid missing hint: [o3O_Pa01483064]
+)

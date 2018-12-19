@@ -97,6 +97,37 @@ class WechatAction extends CommonAction {
         //7idfvHjR9O9A62yMDav65LPcTYI0nJHIhWeq3_yJ5E0
 
         $Event = $this->wechat_obj->getRev()->getRevEvent();
+        if($Event['event'] == 'CLICK'){
+            $key = $Event['key'];
+            $res = M('wechat_menu')->where('key = '.$key)->find();
+            $media_id = $res['media_id'];
+            $content = $res['content'];
+            if(!$media_id && $content){
+                $content = mb_strlen($info['content'], 'utf-8') > 500 ? mb_substr($info['content'], 0, 500, 'utf-8').'....' : $news['n_content'];
+                $content = strip_tags($content);
+                $this->wechat_obj->text($content)->reply();
+            }elseif(!$media_id && !$content && $thumb_media_id){
+                $this->wechat_obj->image($thumb_media_id)->reply();
+            }else{
+                //获取素材
+                $result = $this->wechat_obj->getForeverMedia($media_id);
+                $media_data = $result['news_item'][0];
+                $news_data = array(
+                  "0"=>array(
+                     'Title'=>$media_data['title'],
+                     'Description'=>$media_data['digest'],
+                     'PicUrl'=>$media_data['thumb_url'],
+                      'Url'=>$media_data['url'],
+                 ),
+                );
+                $this->wechat_obj->news($news_data)->reply();
+            }
+            exit;
+        }else{
+          // setlog('getRevEvent_return:'.$Event['event']);
+          // setlog('getRevEvent_return:'.$Event['key']);
+        }
+
 
         if($Event['event'] == 'CLICK' && $Event['key'] == 'TEST_V2_1'){
             // $data = array(
@@ -126,10 +157,7 @@ class WechatAction extends CommonAction {
             // $content = mb_strlen($info['content'], 'utf-8') > 500 ? mb_substr($info['content'], 0, 500, 'utf-8').'....' : $news['n_content'];
             // $content = strip_tags($content);
             // $this->wechat_obj->text($content)->reply();
-
-
-            $this->wechat_obj->image('7idfvHjR9O9A62yMDav65EEw59dqi8D9l8_7EvlGIUY')->reply();
-            exit;
+            
             
         }else{
           // setlog('getRevEvent_return:'.$Event['event']);

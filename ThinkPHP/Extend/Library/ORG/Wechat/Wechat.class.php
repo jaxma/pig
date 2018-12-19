@@ -1623,6 +1623,7 @@ class Wechat
 			if (!$json || !empty($json['errcode'])) {
 				$this->errCode = $json['errcode'];
 				$this->errMsg = $json['errmsg'];
+                setLog('wechat_return:'.print_r($json,1),'wechat_api_error');
 				return false;
 			}
 			return true;
@@ -1830,6 +1831,10 @@ class Wechat
             if (!$json || !empty($json['errcode'])) {
                 $this->errCode = $json['errcode'];
                 $this->errMsg = $json['errmsg'];
+                $str_err = strstr($this->errMsg,"reach max api daily quota limit hint");
+                if($str_err){
+           			return 'max api';
+                }
                 setLog('wechat_return:'.print_r($json,1),'wechat_api_error');
                 return false;
             }
