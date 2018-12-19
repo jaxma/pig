@@ -1814,13 +1814,13 @@ class Wechat
 		 $result = curl_exec( $ch1 );
 		 // echo '<br/>';
 		 // echo 'reulst is ==========>'.$result;
+         setLog('upload_meterial:res：'.$result.'error_num:'.curl_errno(),'wechat_api_error');
 		 curl_close( $ch1 );
 		 if(curl_errno()==0){
 		  $result=json_decode($result,true);
 		  //var_dump($result);
 		  return $result;
 		 }else {
-          setLog('upload_meterial:res：'.$result.'error_num:'.curl_errno(),'wechat_api_error');
 		  return false;
 		 }
 	}
