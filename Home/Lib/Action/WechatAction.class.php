@@ -100,8 +100,9 @@ class WechatAction extends CommonAction {
         if($Event['event'] == 'CLICK'){
             $key = $Event['key'];
             $key = trim($key);
-            $res = M('wechat_menu')->where('key = '.$key)->find();
-            $res = M('wechat_menu')->where('id = 874')->find();
+            $where = "key like '%$key%'"
+            $res = M('wechat_menu')->where($where)->find();
+            // $res = M('wechat_menu')->where('id = 874')->find();
             $sql = M('wechat_menu')->_sql();
             $media_id = $res['media_id'];
             $content = $res['content'];
