@@ -54,7 +54,7 @@ class MenuAction extends Action {
                 $data = array(
                     'type' => $v['type'], 
                     'name' => $v['name'], 
-                    'key' => $v['key'], 
+                    'mkey' => $v['key'], 
                     'pid' => 0, 
                 );
                 $res = M('wechat_menu')->where($data)->find();
@@ -99,7 +99,7 @@ class MenuAction extends Action {
                             $data = array(
                                 'type' => $vv['type'], 
                                 'name' => $vv['name'], 
-                                'key' => $vv['key'], 
+                                'mkey' => $vv['key'], 
                                 'pid' => $pid, 
                             );
                             $res = M('wechat_menu')->where($data)->find();
@@ -175,7 +175,7 @@ class MenuAction extends Action {
             $key = "MENU_".$_key;
             $data = array(
                 'type'=>'click',
-                'key'=>$key
+                'mkey'=>$key
             );
             M('wechat_menu')->where('id='.$r['pid'])->save($data);
             //删除所有冗余的子栏目
@@ -247,7 +247,7 @@ class MenuAction extends Action {
             if($pid != 0){
                 $data = array(
                     'type' => '',
-                    'key' => '',
+                    'mkey' => '',
                     'url' => '',
                     'image' => '',
                     'author' => '',
@@ -268,7 +268,7 @@ class MenuAction extends Action {
                 $data = array(
                     'name' => $name,
                     'type' => $type,
-                    'key' => $key,
+                    'mkey' => $key,
                     'pid' => $pid,
                     'url' => '',
                     'image' => $thumb_img,
@@ -286,7 +286,7 @@ class MenuAction extends Action {
                     'url' => $url,
                     'pid' => $pid,
                     'content' => '',
-                    'key' => '',
+                    'mkey' => '',
                 );
             }else{
                 $data = array(
@@ -322,7 +322,7 @@ class MenuAction extends Action {
             if($res['type'] == 'click' && $res['pid'] == 0){
                 $temp['type'] = $res['type'];
                 $temp['name'] = trim($res['name']);
-                $temp['key'] = $res['key'];
+                $temp['key'] = $res['mkey'];
             }elseif($res['type'] == 'view' && $res['pid'] == 0){
                 $temp['type'] = $res['type'];
                 $temp['name'] = trim($res['name']);
@@ -336,7 +336,7 @@ class MenuAction extends Action {
             if($res['type'] == 'click' && $res['pid'] == 0){
                 $temp['type'] = $res['type'];
                 $temp['name'] = trim($res['name']);
-                $temp['key'] = $res['key'];
+                $temp['key'] = $res['mkey'];
             }elseif($res['type'] == 'view' && $res['pid'] == 0){
                 $temp['type'] = $res['type'];
                 $temp['name'] = trim($res['name']);
@@ -349,7 +349,7 @@ class MenuAction extends Action {
                     if($r['type'] == 'click'){
                         $t['type'] = $r['type'];
                         $t['name'] = trim($r['name']);
-                        $t['key'] = $r['key'];
+                        $t['key'] = $r['mkey'];
                     }elseif($r['type'] == 'view'){
                         $t['type'] = $r['type'];
                         $t['name'] = trim($r['name']);
@@ -366,7 +366,7 @@ class MenuAction extends Action {
                     if($r['type'] == 'click'){
                         $tt['type'] = $r['type'];
                         $tt['name'] = trim($r['name']);
-                        $tt['key'] = $r['key'];
+                        $tt['key'] = $r['mkey'];
                     }elseif($r['type'] == 'view'){
                         $tt['type'] = $r['type'];
                         $tt['name'] = trim($r['name']);
