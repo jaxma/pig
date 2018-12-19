@@ -122,7 +122,9 @@ class WechatAction extends CommonAction {
             // $this->wechat_obj->news($news_data)->reply();
 
             $info = M('goods')->where('goods_id = 15')->find();
-            $this->wechat_obj->text($info['content'])->reply();
+            //550个汉字左右
+            $content = mb_strlen($info['content'], 'utf-8') > 500 ? mb_substr($info['content'], 0, 500, 'utf-8').'....' : $news['n_content'];
+            $this->wechat_obj->text($content)->reply();
             exit;
         }else{
           // setlog('getRevEvent_return:'.$Event['event']);
