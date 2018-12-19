@@ -444,7 +444,7 @@ class MenuAction extends Action {
                       "media" => '@{$img_path}',
                     );
                     $upload_img_result = $this->wechat_obj->uploadImg($file_info2);
-                    setlog('uploadImg:'.$file_info);
+                    setlog('uploadImg:'.$img_path);
                 }
                 if(!$upload_img_result)$upload_img_result['url'] = '??';//可以填写默认图片
 	            $v = $upload_img_result['url'];
