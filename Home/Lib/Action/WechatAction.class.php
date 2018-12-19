@@ -115,11 +115,11 @@ class WechatAction extends CommonAction {
                  ),
                 );
                 $this->wechat_obj->news($news_data)->reply();
-            }elseif(!$media_id && $content){
+            }elseif((!$media_id || $media_id == null) && $content && $content != null){
                 $content = mb_strlen($info['content'], 'utf-8') > 500 ? mb_substr($info['content'], 0, 500, 'utf-8').'....' : $info['content'];
                 $content = strip_tags($content);
                 $this->wechat_obj->text($content)->reply();
-            }elseif(!$media_id && !$content && $thumb_media_id){
+            }elseif((!$media_id || $media_id == null) && (!$content || $content == null) && $thumb_media_id){
                 $this->wechat_obj->image($thumb_media_id)->reply();
             }else{
                 $this->wechat_obj->text('null')->reply();
