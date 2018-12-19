@@ -438,7 +438,15 @@ class MenuAction extends Action {
 	              'media' => "@{$img_path}",
 	            );
 	            $upload_img_result = $this->wechat_obj->uploadImg($file_info);
-	            if(!$upload_img_result) $upload_img_result['url'] = '';//可以填写默认图片
+	            if(!$upload_img_result){
+                    //可能是引号的问题
+                    $file_info = array(
+                      "media" => '@{$img_path}',
+                    );
+                    $upload_img_result = $this->wechat_obj->uploadImg($file_info);
+                    setlog('uploadImg:'.$file_info);
+                }
+                if(!$upload_img_result)$upload_img_result['url'] = '';//可以填写默认图片
 	            $v = $upload_img_result['url'];
         	}
             $u[] = $v;
