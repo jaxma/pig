@@ -108,19 +108,21 @@ class WechatAction extends CommonAction {
             //  ),
             // );
 
-            //获取素材
-            $result = $this->wechat_obj->getForeverMedia('7idfvHjR9O9A62yMDav65C2BZ_sMlqtfJ9HCfkUlL50');
-            $media_data = $result['news_item'][0];
-            $news_data = array(
-              "0"=>array(
-                 'Title'=>$media_data['title'],
-                 'Description'=>$media_data['digest'],
-                 'PicUrl'=>$media_data['thumb_url'],
-                  'Url'=>$media_data['url'],
-             ),
-            );
-            $this->wechat_obj->news($news_data)->reply();
-            // $this->wechat_obj->text('faker')->reply();
+            // //获取素材
+            // $result = $this->wechat_obj->getForeverMedia('7idfvHjR9O9A62yMDav65C2BZ_sMlqtfJ9HCfkUlL50');
+            // $media_data = $result['news_item'][0];
+            // $news_data = array(
+            //   "0"=>array(
+            //      'Title'=>$media_data['title'],
+            //      'Description'=>$media_data['digest'],
+            //      'PicUrl'=>$media_data['thumb_url'],
+            //       'Url'=>$media_data['url'],
+            //  ),
+            // );
+            // $this->wechat_obj->news($news_data)->reply();
+
+            $info = M('goods')->where('goods_id = 15')->find();
+            $this->wechat_obj->text($info['content'])->reply();
             exit;
         }else{
           // setlog('getRevEvent_return:'.$Event['event']);
