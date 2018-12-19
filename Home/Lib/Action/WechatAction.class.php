@@ -124,8 +124,10 @@ class WechatAction extends CommonAction {
             $info = M('goods')->where('goods_id = 15')->find();
             //550个汉字左右
             $content = mb_strlen($info['content'], 'utf-8') > 500 ? mb_substr($info['content'], 0, 500, 'utf-8').'....' : $news['n_content'];
+            $content = strip_tags($content);
             $this->wechat_obj->text($content)->reply();
             exit;
+            
         }else{
           // setlog('getRevEvent_return:'.$Event['event']);
           // setlog('getRevEvent_return:'.$Event['key']);
