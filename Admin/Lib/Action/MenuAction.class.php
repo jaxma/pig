@@ -409,7 +409,7 @@ class MenuAction extends Action {
                 'code'=>2,
                 'msg'=>'保存失败'
             );
-            setlog('save_error:'.$arr);
+            setlog('save_error:'.print_r($arr,1));
         }
         $this->ajaxReturn($data);
     }
@@ -441,13 +441,13 @@ class MenuAction extends Action {
 	            $upload_img_result = $this->wechat_obj->uploadImg($file_info);
 	            if(!$upload_img_result){
                     //可能是引号的问题
-                    $file_info = array(
+                    $file_info2 = array(
                       "media" => '@{$img_path}',
                     );
-                    $upload_img_result = $this->wechat_obj->uploadImg($file_info);
-                    setlog('uploadImg:'.$file_info);
+                    $upload_img_result = $this->wechat_obj->uploadImg($file_info2);
+                    setlog('uploadImg:'.print_r($file_info.$file_info2,1));
                 }
-                if(!$upload_img_result)$upload_img_result['url'] = '';//可以填写默认图片
+                if(!$upload_img_result)$upload_img_result['url'] = '??';//可以填写默认图片
 	            $v = $upload_img_result['url'];
         	}
             $u[] = $v;
