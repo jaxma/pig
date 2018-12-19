@@ -99,6 +99,7 @@ class WechatAction extends CommonAction {
         $Event = $this->wechat_obj->getRev()->getRevEvent();
         if($Event['event'] == 'CLICK'){
             $key = $Event['key'];
+            $key = trim($key);
             $res = M('wechat_menu')->where('key = '.$key)->find();
             $sql = M('wechat_menu')->_sql();
             $media_id = $res['media_id'];
@@ -123,7 +124,7 @@ class WechatAction extends CommonAction {
             }elseif((!$media_id || $media_id == null) && (!$content || $content == null) && $thumb_media_id){
                 $this->wechat_obj->image($thumb_media_id)->reply();
             }else{
-                $this->wechat_obj->text($sql)->reply();
+                $this->wechat_obj->text($sql.'内容'.$content)->reply();
                 setlog('getRevEvent_return:'.$sql);
             }
             exit;
