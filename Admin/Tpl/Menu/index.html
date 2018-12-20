@@ -244,11 +244,13 @@
     function save_menu(del){
         layer.load();
         layer.msg('保存中');
-        $li_parent_active = $('#menu li').hasClass('active');
-        $span_children_active = $('#menu li span').hasClass('active');
-        if(objIsEmpty($li_parent_active) && objIsEmpty($span_children_active)){
-            layer.msg('请选择要保存的菜单栏！');
-            return false;
+        if(del != 1){
+            $li_parent_active = $('#menu li').hasClass('active');
+            $span_children_active = $('#menu li span').hasClass('active');
+            if(objIsEmpty($li_parent_active) && objIsEmpty($span_children_active)){
+                layer.msg('请选择要保存的菜单栏！');
+                return false;
+            }
         }
         var del = arguments[0] ? arguments[0] : '';
         var id = $("input[name='id']").val();
