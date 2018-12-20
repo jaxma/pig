@@ -1840,6 +1840,7 @@ class Wechat
 		 $real_path= $file_info['filename'];
 		 //$real_path=str_replace("/", "\\", $real_path);
 		 $data= array("media"=>"@{$real_path}",'form-data'=>$file_info);
+		 //兼容5.6及以上
         if (class_exists('\CURLFile')) {
 			$data['media'] = new \CURLFile(realpath($real_path));
 			$data['form'] = $file_info;
