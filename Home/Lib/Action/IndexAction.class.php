@@ -248,6 +248,44 @@ class IndexAction extends CommonAction {
 		$this->success('数据保存成功！');
 }
     public function test(){
+
+        // if($return_result){        
+        //     $options = array(
+        //         'token' => C('APP_TOKEN'), //填写您设定的key
+        //         'encodingaeskey' => C('APP_AESK'), //填写加密用的EncodingAESKey，如接口为明文模式可忽略
+        //         'appid' => C('APP_ID'), //填写高级调用功能的app id
+        //         'appsecret' => C('APP_SECRET'), //填写高级调用功能的密钥
+        //     );
+            
+        //     import("Wechat.Wechat", APP_PATH);
+        //     $this->wechat_obj = new Wechat($options);
+
+        //     $order_mb = C('ORDER_MB');
+        //     $template_id = $order_mb['AUDIT'];
+        //     $url = "http://" . C('YM_DOMAIN');
+
+        //     $order_num = $content['order_num'];
+        //     $date = date('Y-m-d H:i:s', time());
+        //     $sendData = array(
+        //         'first'=>array('value'=>("您的代理申请已经提交！"),'color'=>"#CC0000"),
+        //         'keyword1' => array('value' => ("$level"), 'color' => '#000'),
+        //         'keyword2' => array('value' => ("$date"), 'color' => '#000'),
+        //         'keyword3' => array('value' => ("已经提交"), 'color' => '#000'),
+        //         'remark' => array('value' => ("点击查看订单详情"), 'color' => '#CC0000')
+        //     );
+
+        // }
+        
+        // $template = array(
+        //     'touser' => $openid,
+        //     'template_id' => $template_id,
+        //     'url' => $url,
+        //     'topcolor' => '#7B68EE',
+        //     'data' => $sendData
+        // );
+
+        // $this->wechat_obj->sendTemplateMessage($template);
+        
         $result = send_mail('1058514799@qq.com','tujia','测试','邮件测试!');
         pre($result);
     }
