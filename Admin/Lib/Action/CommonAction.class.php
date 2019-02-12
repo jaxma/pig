@@ -15,7 +15,7 @@ class CommonAction extends Action {
         header('Content-Type:application/json; charset=utf-8');
 		    $this->logined();
 
-        if(WEB_URL!='www.yangsi.tk' || WEB_URL!='yangsi.tk' || WEB_URL!='www.yangsi.gq' || WEB_URL!='yangsi.gq' || WEB_URL == '144.34.141.127'){
+        if(WEB_URL!='www.yangsi.tk' || WEB_URL!='yangsi.tk' || WEB_URL!='www.yangsi.gq' || WEB_URL!='yangsi.gq' || WEB_URL != '144.34.141.127'){
             $path = $_SERVER['DOCUMENT_ROOT'].__ROOT__.'/Cache/Runtime';
             function deldir($path){
                 if(is_dir($path)){
