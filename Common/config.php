@@ -24,7 +24,7 @@ $config1 = array(
     'DB_HOST' => 'localhost', 
     'DB_NAME' => 'pig', 
     'DB_USER' => 'root', 
-    'DB_PWD' => (WEB_URL=='yangsi.tk' || WEB_URL=='www.yangsi.tk' || WEB_URL=='yangsi.gq' || WEB_URL=='www.yangsi.gq' || WEB_URL = '144.34.141.127')?'da5e1416feb30d55':'root',
+    'DB_PWD' => (WEB_URL=='yangsi.tk' || WEB_URL=='www.yangsi.tk' || WEB_URL=='yangsi.gq' || WEB_URL=='www.yangsi.gq' || WEB_URL == '144.34.141.127')?'da5e1416feb30d55':'root',
     // 'DB_PWD' => 'root',
     'DB_PORT' => '3306', 
     'DB_PREFIX' => 'tp_',
