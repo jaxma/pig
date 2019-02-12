@@ -82,7 +82,7 @@ class WechatAction extends CommonAction {
         //   'digest' => '测试简介',
         //   'show_cover_pic' => 0,
         //   'content' => '测试用的<img src="http://mmbiz.qpic.cn/mmbiz_jpg/CgW0qVibL6YxABfsI3BjPSV3MSTibXibOcPj9f2Xvib3Mt87NwvicTyNiabJib8Hb3uOmchoSoRyhmArBkSfwcJX56CNQ/0?wx_fmt=jpeg" alt="" />测试用的',
-        //   'content_source_url' => 'www.yangsi.tk'
+        //   'content_source_url' => 'www.yangsi.gq'
         // );
 
         // $articles[] = $upload_article_data;
@@ -141,8 +141,8 @@ class WechatAction extends CommonAction {
             //   "0"=>array(
             //      'Title'=>'曾经的大猪',
             //      'Description'=>'曾经...',
-            //      'PicUrl'=>'http://www.yangsi.tk/Public/Admin/kindeditor/attached/image/20181103/20181103063738_69669.jpg',
-            //       'Url'=>'http://www.yangsi.tk/'
+            //      'PicUrl'=>'http://www.yangsi.gq/Public/Admin/kindeditor/attached/image/20181103/20181103063738_69669.jpg',
+            //       'Url'=>'http://www.yangsi.gq/'
             //  ),
             // );
 

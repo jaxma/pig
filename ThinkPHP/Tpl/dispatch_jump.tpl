@@ -63,7 +63,7 @@
                 <p class="detail"></p>                
             </div>
             <p class="jump">等待 <b id="wait" style="color:#f00;"><?php echo($waitSecond); ?></b> 秒后页面将自动 <a id="href" href="<?php echo($jumpUrl); ?>">跳转</a> </p>
-            <footer>Powered by <a href="http://www.yangsi.tk/" target="_blank">www.yangsi.tk</a></footer>
+            <footer>Powered by <a href="http://www.yangsi.gq/" target="_blank">www.yangsi.gq</a></footer>
         </div>
         <script type="text/javascript">
             (function(){

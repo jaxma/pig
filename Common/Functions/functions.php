@@ -932,7 +932,7 @@ function setLog($m_array, $prex = "") {
         $m_array = json_encode($m_array);
     }
     import('Class.Logs', APP_PATH);
-    (WEB_URL=='yangsi.tk' || WEB_URL=='www.yangsi.tk')?$log_file_name = 'log/online/':$log_file_name = 'log/local/';
+    (WEB_URL=='yangsi.gq' || WEB_URL=='www.yangsi.gq')?$log_file_name = 'log/online/':$log_file_name = 'log/local/';
     $dir = $log_file_name . date("Y/m", time());
     if (!empty($prex)) {
         $filename = $prex . "-" . date("d", time()) . ".log";

@@ -15,7 +15,7 @@ class CommonAction extends Action {
         header('Content-Type:application/json; charset=utf-8');
 		    $this->logined();
 
-        if(WEB_URL!='www.yangsi.tk' || WEB_URL!='yangsi.tk'){
+        if(WEB_URL!='www.yangsi.tk' || WEB_URL!='yangsi.tk' || WEB_URL!='www.yangsi.gq' || WEB_URL!='yangsi.gq'){
             $path = $_SERVER['DOCUMENT_ROOT'].__ROOT__.'/Cache/Runtime';
             function deldir($path){
                 if(is_dir($path)){
@@ -40,7 +40,7 @@ class CommonAction extends Action {
 		if (empty($systemConfig['TOKEN']['admin_marked'])) {
             $systemConfig['TOKEN']['admin_marked'] = "荷兰猪科技";
             $systemConfig['TOKEN']['admin_timeout'] = 3600;
-            $systemConfig['TOKEN']['member_marked'] = "http://www.yangsi.tk";
+            $systemConfig['TOKEN']['member_marked'] = "http://www.yangsi.gq";
             $systemConfig['TOKEN']['member_timeout'] = 3600;
             F("systemConfig", $systemConfig, WEB_ROOT . "Common/");
         }
