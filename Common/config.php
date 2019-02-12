@@ -3,6 +3,7 @@
  * 通用配置文件
  * Date:2013-02-01
  */
+echo WEB_URL;die;
 $config1 = array(
     // 'TMPL_CACHE_ON' => false,
     // 'HTML_CACHE_ON' => false,
