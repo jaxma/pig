@@ -3,7 +3,6 @@
 class CommonAction extends Action {
     protected $site_config = null;
     public function __construct() {
-        echo 1;
         header('Content-Type:text/html; charset=utf-8');
         $site_config = include WEB_ROOT . 'Common/systemConfig.php';
 
