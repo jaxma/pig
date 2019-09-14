@@ -19,5 +19,5 @@ define('CSO','is_recommend desc,sort_order asc,cat_id desc');
 define('FSO','is_best desc,is_top desc,is_recommend desc,is_hot desc,id desc');
 define('COLS','article_id,title,original_img,short,cat_id');
 
-require(THINK_PATH . "ThinkPHP.php");
+// require(THINK_PATH . "ThinkPHP.php");
 ?>
